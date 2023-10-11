@@ -1,0 +1,36 @@
+name: ci
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+# env:
+#   PRIVATE_ETHEREUM_RPC: ${{ secrets.PRIVATE_ETHEREUM_RPC }}
+#   PRIVATE_OPTIMISM_RPC: ${{ secrets.PRIVATE_OPTIMISM_RPC }}
+#   PRIVATE_ARBITRUM_ONE_RPC: ${{ secrets.PRIVATE_ARBITRUM_ONE_RPC }}
+#   PRIVATE_POLYGON_RPC: ${{ secrets.PRIVATE_POLYGON_RPC }}
+#   PRIVATE_GNOSIS_RPC: ${{ secrets.PRIVATE_GNOSIS_RPC }}
+#   PRIVATE_CELO_RPC: ${{ secrets.PRIVATE_CELO_RPC }}
+#   PRIVATE_AVALANCHE_RPC: ${{ secrets.PRIVATE_AVALANCHE_RPC }}
+#   PRIVATE_FANTOM_RPC: ${{ secrets.PRIVATE_FANTOM_RPC }}
+#   PRIVATE_BSC_RPC: ${{ secrets.PRIVATE_BSC_RPC }}
+
+jobs:
+  run-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Check linting
+        run: npm run lint:check
+
+      - name: Run tests
+        run: npm run test

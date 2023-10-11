@@ -1,0 +1,22 @@
+{
+	"theme_color": "#addad5",
+	"background_color": "#addad5",
+	"display": "standalone",
+	"scope": "/",
+	"start_url": "/",
+	"name": "xSafe",
+	"short_name": "xSafe",
+	"description": "An open source user interface for the cross-chain contract aggregation tool, xSafe.",
+	"icons": [
+		{
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-256x256.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		}
+	]
+}
