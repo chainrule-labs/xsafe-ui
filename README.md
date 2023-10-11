@@ -1,14 +1,13 @@
 # xSafe User Interface
 
 ![Static Badge](https://img.shields.io/badge/license-MIT-yellow)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/chainrule-labs/xsafe-ui/ci.yml?label=tests)
 
 An open source user interface for the cross-chain contract aggregation tool, xSafe.
 
 This interface allows users to **securely**:
 
 -   Deploy smart contracts to different chains with the same address and configuration.
--   Sign multi-sig contract proposals across different chains with only one signature.
--   Execute multi-sig contract transactions accross different chains with only one confirmation.
 
 ## Getting Started with Development
 

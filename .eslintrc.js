@@ -1,27 +1,6 @@
 module.exports = {
+	root: true,
 	parser: "@typescript-eslint/parser",
-	extends: [
-		"plugin:react/recommended",
-		"airbnb",
-		"plugin:@typescript-eslint/recommended",
-		"prettier",
-	],
-	plugins: ["react", "@typescript-eslint"],
-	env: {
-		browser: true,
-		es2021: true,
-		jest: true,
-	},
-	settings: {
-		react: {
-			version: "detect",
-		},
-		"import/resolver": {
-			node: {
-				extensions: [".js", ".jsx", ".ts", ".tsx"],
-			},
-		},
-	},
 	parserOptions: {
 		ecmaVersion: "latest",
 		sourceType: "module",
@@ -29,16 +8,48 @@ module.exports = {
 			jsx: true,
 		},
 	},
+	settings: {
+		react: {
+			version: "detect",
+		},
+		"import/resolver": {
+			node: {
+				extensions: [".json", ".js", ".jsx", ".ts", ".tsx", ".d.ts"],
+			},
+			typescript: {
+				alwaysTryTypes: true,
+				project: "tsconfig.json",
+			},
+		},
+		"import/parsers": {
+			"@typescript-eslint/parser": [".ts", ".tsx"],
+		},
+	},
+	extends: [
+		"plugin:react/recommended",
+		"airbnb",
+		"plugin:@typescript-eslint/recommended",
+		"prettier",
+	],
+	plugins: ["react", "prettier", "@typescript-eslint", "simple-import-sort"],
+	env: {
+		browser: true,
+		es2021: true,
+		node: true,
+		jest: true,
+	},
 	rules: {
 		"no-console": ["warn"],
-		"import/extensions": "off",
+		"prettier/prettier": "error",
+		"import/no-unresolved": "error",
+		"simple-import-sort/imports": "error",
+		"simple-import-sort/exports": "error",
+		"@typescript-eslint/no-shadow": "error",
 		"no-nested-ternary": "off",
-		"react/react-in-jsx-scope": "off",
-		"react/prop-types": "off",
-		"react/function-component-definition": "off",
+		"no-shadow": "off",
+		"import/extensions": "off",
 		"react/button-has-type": "off",
-		"react/jsx-props-no-spreading": "off",
-		"jsx-a11y/label-has-associated-control": "off",
+		"import/prefer-default-export": "off",
 		radix: "off",
 		"react/jsx-filename-extension": [
 			2,
