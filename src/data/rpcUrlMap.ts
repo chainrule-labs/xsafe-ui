@@ -1,0 +1,15 @@
+export const rpcUrlMap: Record<number, string> = {
+	1: process.env.PRIVATE_ETHEREUM_RPC!,
+	10: process.env.PRIVATE_OPTIMISM_RPC!,
+	42161: process.env.PRIVATE_ARBITRUM_ONE_RPC!,
+	137: process.env.PRIVATE_POLYGON_RPC!,
+	100: process.env.PRIVATE_GNOSIS_RPC!,
+	42220: process.env.PRIVATE_CELO_RPC!,
+	43114: process.env.PRIVATE_AVALANCHE_RPC!,
+	250: process.env.PRIVATE_FANTOM_RPC!,
+	56: process.env.PRIVATE_BSC_RPC!,
+	1313161554: process.env.PRIVATE_AURORA_RPC!,
+	8453: process.env.PRIVATE_BASE_RPC!,
+	84531: process.env.PRIVATE_BASE_GOERLI_RPC!,
+	5: process.env.PRIVATE_GOERLI_RPC!,
+};

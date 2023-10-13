@@ -1,5 +1,11 @@
 import "../styles/globals.css";
+
 import type { Metadata } from "next";
+import React from "react";
+
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { ReduxProvider } from "../state/reduxProvider";
 
 export const metadata: Metadata = {
 	title: "xSafe",
@@ -16,16 +22,11 @@ export default function RootLayout({
 		<html lang="en">
 			<body className="flex min-h-screen flex-col bg-black text-[#addad5]">
 				<main className="flex w-full min-w-[300px] flex-1 flex-col items-center">
-					<header className="flex w-full items-center justify-between border-b border-b-[#395754] px-4 py-2">
-						<div className="relative flex w-14 justify-center outline-none">
-							<img src="/images/iconXsafe.svg" alt="xsafe-icon" />
-						</div>
-						<span>TEST HEADER</span>
-					</header>
-					{children}
-					<footer className="flex w-full items-center justify-center bg-[#395754] p-4 text-white">
-						TEST FOOTER
-					</footer>
+					<ReduxProvider>
+						<Header />
+						{children}
+						<Footer />
+					</ReduxProvider>
 				</main>
 			</body>
 		</html>

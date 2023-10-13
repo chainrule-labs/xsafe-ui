@@ -50,6 +50,9 @@ module.exports = {
 		"import/extensions": "off",
 		"react/button-has-type": "off",
 		"import/prefer-default-export": "off",
+		"no-useless-constructor": "off",
+		"no-underscore-dangle": "off",
+		"class-methods-use-this": "off",
 		radix: "off",
 		"react/jsx-filename-extension": [
 			2,

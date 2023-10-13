@@ -5,3 +5,31 @@
 body {
 	font-family: "Courier New", Courier, monospace;
 }
+
+/* Offset Border Utility Class */
+.offset-border {
+	position: relative;
+	--offset-border-color: #addad5; /* Default Color */
+}
+
+.offset-border::before,
+.offset-border::after {
+	content: "";
+	position: absolute;
+	background-color: var(--offset-border-color);
+	z-index: -1;
+}
+
+.offset-border::before {
+	bottom: -3px;
+	left: 1px;
+	right: -3px;
+	height: 2px;
+}
+
+.offset-border::after {
+	right: -3px;
+	top: 1px;
+	bottom: -3px;
+	width: 2px;
+}
