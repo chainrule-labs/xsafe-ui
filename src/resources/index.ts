@@ -5,6 +5,7 @@ export {
 	parseUnits,
 	zeroAddress,
 } from "./blockchainInterface";
+export { getChain } from "./getChain";
 export {
 	connect,
 	disconnect,
