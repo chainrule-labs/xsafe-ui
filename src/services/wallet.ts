@@ -14,12 +14,12 @@ import {
 	fetchBalance,
 	fetchEnsAvatar,
 	fetchEnsName,
-	// getChain,
+	getChain,
 	getWalletClient,
 	switchNetwork,
 	walletConfig,
 	watchAccount,
-	// watchNetwork,
+	watchNetwork,
 } from "../resources";
 import store from "../state/store";
 import {
@@ -105,31 +105,31 @@ class WalletService extends IWalletService {
 			const evmWalletClient: WalletClient | null =
 				await getWalletClient();
 			const address = connection.account;
-			// const chainId = connection.chain.id;
+			const chainId = connection.chain.id;
 
 			this.provider = evmProvider;
 			this.walletClient = evmWalletClient;
 
 			// Subscribe to account and network changes
 			this._handleAccountChanged();
-			// this._handleNetworkChanged();
+			this._handleNetworkChanged();
 
 			// Check if user's current network is supported and update global state variable
-			// if (getChain({ chainId })) {
-			// 	store.dispatch(
-			// 		updateCurrentNetwork({
-			// 			chainId,
-			// 			isSupported: true,
-			// 		})
-			// 	);
-			// } else {
-			// 	store.dispatch(
-			// 		updateCurrentNetwork({
-			// 			chainId,
-			// 			isSupported: false,
-			// 		})
-			// 	);
-			// }
+			if (getChain({ chainId })) {
+				store.dispatch(
+					updateCurrentNetwork({
+						chainId,
+						isSupported: true,
+					})
+				);
+			} else {
+				store.dispatch(
+					updateCurrentNetwork({
+						chainId,
+						isSupported: false,
+					})
+				);
+			}
 
 			// Even though balanceObject.value is already of type bigint, the bigint type cannot be stored
 			// in Redux. It must be stored as a string, and then casted back to bigint using BigInt() when
@@ -241,32 +241,32 @@ class WalletService extends IWalletService {
 		});
 	}
 
-	// private async _handleNetworkChanged(): Promise<void> {
-	// 	watchNetwork((network) => {
-	// 		// Check if user's current network is supported and update global state
-	// 		if (network.chain?.id) {
-	// 			if (getChain({ chainId: network.chain.id })) {
-	// 				store.dispatch(
-	// 					updateCurrentNetwork({
-	// 						chainId: network.chain.id,
-	// 						isSupported: true,
-	// 					})
-	// 				);
+	private async _handleNetworkChanged(): Promise<void> {
+		watchNetwork((network) => {
+			// Check if user's current network is supported and update global state
+			if (network.chain?.id) {
+				if (getChain({ chainId: network.chain.id })) {
+					store.dispatch(
+						updateCurrentNetwork({
+							chainId: network.chain.id,
+							isSupported: true,
+						})
+					);
 
-	// 				if (store.getState().wallet.address) {
-	// 					this.getNativeBalance(store.getState().wallet.address!);
-	// 				}
-	// 			} else {
-	// 				store.dispatch(
-	// 					updateCurrentNetwork({
-	// 						chainId: network.chain?.id,
-	// 						isSupported: false,
-	// 					})
-	// 				);
-	// 			}
-	// 		}
-	// 	});
-	// }
+					if (store.getState().wallet.address) {
+						this.getNativeBalance(store.getState().wallet.address!);
+					}
+				} else {
+					store.dispatch(
+						updateCurrentNetwork({
+							chainId: network.chain?.id,
+							isSupported: false,
+						})
+					);
+				}
+			}
+		});
+	}
 	// ******************************************************************************************* //
 }
 
