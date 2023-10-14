@@ -17,7 +17,7 @@ function WalletMenu() {
 	const { address, currentNetwork, nativeBalance, ens } = useSelector(
 		(state: RootState) => state.wallet
 	);
-	const [copied, setCopied] = useState(false);
+	const [copied, setCopied] = useState<boolean>(false);
 
 	return (
 		<Menu as="div" className="relative inline-block text-left">
@@ -50,7 +50,7 @@ function WalletMenu() {
 										{nativeBalance!.symbol}
 									</span>
 								) : (
-									<span className="text-center text-red-accent">
+									<span className="text-center text-bad-accent">
 										NETWORK NOT SUPPORTED
 									</span>
 								)}
@@ -69,7 +69,7 @@ function WalletMenu() {
 										/>
 									) : (
 										<PiCheckSquareOffset
-											className="mr-5 flex items-center justify-center text-green-accent"
+											className="mr-5 flex items-center justify-center text-good-accent"
 											size="16px"
 										/>
 									)}

@@ -35,7 +35,7 @@ function NetworkDropdown({
 									<div className="flex w-8 items-center justify-center">
 										<img
 											alt="selectedChainImage"
-											src={selectedChain.imageSource}
+											src={selectedChain?.imageSource}
 										/>
 									</div>
 									<AiFillCaretDown className="ml-2 h-8" />
