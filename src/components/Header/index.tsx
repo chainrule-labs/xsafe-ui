@@ -9,6 +9,7 @@ import WalletService from "../../services/wallet";
 import { RootState } from "../../state/store";
 import ConnectButton from "../ConnectButton";
 import NetworkDropdown from "../NetworkDropdown";
+import WalletMenu from "../WalletMenu";
 
 function Header() {
 	const { isWalletConnected, currentNetwork } = useSelector(
@@ -45,7 +46,6 @@ function Header() {
 				<img src="/images/iconXsafe.svg" alt="xsafe-icon" />
 			</div>
 			{isWalletConnected ? (
-				// TODO: Replace with WalletMenu and NetworkDropdown
 				<div className="flex items-center justify-center">
 					<NetworkDropdown
 						chainList={chainList}
@@ -53,19 +53,7 @@ function Header() {
 						setSelectedChain={setSelectedChain}
 						currentNetwork={currentNetwork!}
 					/>
-					<button
-						style={
-							{
-								"--offset-border-color": "#395754", // dark-200
-							} as React.CSSProperties
-						}
-						className="offset-border z-10 h-10 w-28 items-center justify-center bg-dark-500 font-bold outline-none hover:bg-dark-400 hover:text-primary-100"
-						onClick={() =>
-							WalletService.getInstance().disconnectWallet()
-						}
-					>
-						Disconnect
-					</button>
+					<WalletMenu />
 				</div>
 			) : (
 				<ConnectButton />

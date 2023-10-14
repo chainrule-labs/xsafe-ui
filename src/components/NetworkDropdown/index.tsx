@@ -28,7 +28,7 @@ function NetworkDropdown({
 									"--offset-border-color": "#395754", // dark-200
 								} as React.CSSProperties
 							}
-							className="offset-border z-10 flex h-10 w-20 items-center justify-center bg-dark-500 px-2 font-bold outline-none hover:bg-dark-400 hover:text-primary-100"
+							className="offset-border z-10 flex h-10 w-20 items-center justify-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100"
 						>
 							{currentNetwork.isSupported ? (
 								<div className="flex w-full items-center justify-between">
@@ -64,7 +64,7 @@ function NetworkDropdown({
 								<Listbox.Option
 									key={chain.name}
 									value={chain}
-									className="px-1 py-1"
+									className="p-1"
 								>
 									{({ selected, active }) => (
 										<div
