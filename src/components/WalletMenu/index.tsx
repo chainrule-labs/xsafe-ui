@@ -50,7 +50,7 @@ function WalletMenu() {
 										{nativeBalance!.symbol}
 									</span>
 								) : (
-									<span className="text-bad-accent text-center">
+									<span className="text-center text-bad-accent">
 										NETWORK NOT SUPPORTED
 									</span>
 								)}
@@ -69,7 +69,7 @@ function WalletMenu() {
 										/>
 									) : (
 										<PiCheckSquareOffset
-											className="text-good-accent mr-5 flex items-center justify-center"
+											className="mr-5 flex items-center justify-center text-good-accent"
 											size="16px"
 										/>
 									)}
