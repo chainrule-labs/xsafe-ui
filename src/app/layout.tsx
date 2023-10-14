@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className="bg-dark-600 text-light-200 flex min-h-screen flex-col">
+			<body className="flex min-h-screen flex-col bg-dark-600 text-light-200">
 				<main className="flex w-full min-w-[300px] flex-1 flex-col items-center">
 					<ReduxProvider>
 						<Header />

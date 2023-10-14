@@ -40,7 +40,7 @@ function Header() {
 	}, [selectedChain]);
 
 	return (
-		<header className="border-b-dark-200 flex w-full items-center justify-between border-b px-4 py-2">
+		<header className="flex w-full items-center justify-between border-b border-b-dark-200 px-4 py-2">
 			<div className="relative flex w-14 justify-center outline-none">
 				<img src="/images/iconXsafe.svg" alt="xsafe-icon" />
 			</div>
@@ -59,7 +59,7 @@ function Header() {
 								"--offset-border-color": "#395754", // dark-200
 							} as React.CSSProperties
 						}
-						className="offset-border bg-dark-500 hover:bg-dark-400 hover:text-primary-100 z-10 h-10 w-28 items-center justify-center font-bold outline-none"
+						className="offset-border z-10 h-10 w-28 items-center justify-center bg-dark-500 font-bold outline-none hover:bg-dark-400 hover:text-primary-100"
 						onClick={() =>
 							WalletService.getInstance().disconnectWallet()
 						}

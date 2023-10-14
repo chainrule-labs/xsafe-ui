@@ -45,7 +45,7 @@ function ConnectButton() {
 						"--offset-border-color": "#addad5", // light-200
 					} as React.CSSProperties
 				}
-				className="offset-border bg-primary-200 hover:bg-primary-100 text-dark-600 z-10 flex h-10 w-28 items-center justify-center font-bold outline-none"
+				className="offset-border z-10 flex h-10 w-28 items-center justify-center bg-primary-200 font-bold text-dark-600 outline-none hover:bg-primary-100"
 			>
 				{isLoading ? (
 					<AiOutlineLoading3Quarters
@@ -56,14 +56,14 @@ function ConnectButton() {
 					"Connect"
 				)}
 			</Menu.Button>
-			<Menu.Items className="bg-dark-600 ring-dark-200 absolute right-0 z-50 mt-4 w-48 origin-top-right outline-none ring-1">
+			<Menu.Items className="absolute right-0 z-50 mt-4 w-48 origin-top-right bg-dark-600 outline-none ring-1 ring-dark-200">
 				<div className="px-1 py-1">
 					{walletList.map((wallet) => (
 						<Menu.Item key={wallet.label}>
 							{({ active }) => (
 								<button
 									className={`${
-										active && "text-primary-100 bg-dark-400"
+										active && "bg-dark-400 text-primary-100"
 									} group flex w-full items-center p-2 text-sm`}
 									onClick={() =>
 										WalletService.getInstance().connectWallet(
