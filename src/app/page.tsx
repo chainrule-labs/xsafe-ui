@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 
 import BytecodeInput from "../components/BytecodeInput";
 import DeployButton from "../components/DeployButton";
+import DeployModal from "../components/DeployModal";
 import { chainList } from "../data/chains";
+import { SupportedChain } from "../interfaces/data/chains";
 import { RootState } from "../state/store";
 
 export default function Home() {
@@ -14,6 +16,20 @@ export default function Home() {
 		(state: RootState) => state.wallet
 	);
 	const [bytecode, setBytecode] = useState<string>("");
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const [selectedChain, setSelectedChain] = useState<SupportedChain | null>(
+		null
+	);
+
+	const closeModal = () => {
+		setSelectedChain(null);
+		setIsModalOpen(false);
+	};
+
+	const openModal = (chain: SupportedChain) => {
+		setSelectedChain(chain);
+		setIsModalOpen(true);
+	};
 
 	/**
 	 * What is needed to get Create2Factory to deploy a contract on a chain?
@@ -47,11 +63,6 @@ export default function Home() {
 				{/* TODO: Need to somehow know if contract has been deployed to chain.
 						  If deployed, need to render a checkmark and button to view on explorer.
 						  Else, render DeployButton.
-
-						  Also, if user clicks on DeployButton and their wallet is not on that chain,
-						  need to trigger a switchNetwork action.
-
-						  DeployButton should probably trigger a modal to guide the user through the deployment process.
 				*/}
 				<div className="mt-2 flex w-full max-w-sm flex-col">
 					{chainList.map((chain) => (
@@ -69,9 +80,19 @@ export default function Home() {
 									/>
 								) : null}
 							</div>
-							<DeployButton chain={chain} />
+							<DeployButton
+								chain={chain}
+								isWalletConnected={isWalletConnected}
+								currentNetwork={currentNetwork!}
+								openModal={openModal}
+							/>
 						</div>
 					))}
+					<DeployModal
+						isOpen={isModalOpen}
+						closeModal={closeModal}
+						chain={selectedChain!}
+					/>
 				</div>
 			</div>
 		</div>
