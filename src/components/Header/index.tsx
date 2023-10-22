@@ -56,7 +56,7 @@ function Header() {
 	}, [selectedChain]);
 
 	return (
-		<header className="flex w-full items-center justify-center border-b border-b-dark-200 px-4 py-2">
+		<header className="sticky top-0 z-10 flex w-full items-center justify-center border-b border-b-dark-200 px-4 py-2 backdrop-blur-sm">
 			<div className="flex w-full max-w-4xl items-center justify-between">
 				<div className="relative flex w-14 justify-center outline-none">
 					<img src="/images/iconXsafe.svg" alt="xsafe-icon" />

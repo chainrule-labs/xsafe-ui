@@ -33,6 +33,13 @@ export default function Home() {
 	return (
 		<div className="flex w-full flex-1 flex-col items-center justify-start py-10">
 			<div className="flex min-h-fit w-full min-w-[300px] max-w-3xl flex-col px-4">
+				<h1 className="mb-5 w-fit border-b border-b-primary-100 pb-1 text-xl font-bold">
+					Predictive Deployment
+				</h1>
+				<span className="mb-5">
+					Deploy any smart contract to multiple EVM-compatible chains
+					at the same address.
+				</span>
 				<span className="mb-1 text-start font-bold">
 					Contract Bytecode
 				</span>
