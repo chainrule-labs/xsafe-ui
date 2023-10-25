@@ -2,12 +2,14 @@ import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
+import { PiCheckSquareOffset, PiCopy } from "react-icons/pi";
 import { useSelector } from "react-redux";
 
 import { IDeployModal } from "../../interfaces/components/deployModal";
 import DeployService from "../../services/deploy";
 import WalletService from "../../services/wallet";
 import { RootState } from "../../state/store";
+import { copyToClipboard } from "../../utils/copyToClipboard";
 import ModalActionButton from "../ModalActionButton";
 
 function DeployModal({
@@ -30,6 +32,7 @@ function DeployModal({
 	const [successMessage, setSuccessMessage] = useState<string>("");
 	const [expectedAddress, setExpectedAddress] = useState<`0x${string}`>("0x");
 	const [txHash, setTxHash] = useState<`0x${string}`>("0x");
+	const [copied, setCopied] = useState<boolean>(false);
 
 	const resetState = () => {
 		setSignature("");
@@ -146,7 +149,7 @@ function DeployModal({
 							leaveFrom="opacity-100"
 							leaveTo="opacity-0"
 						>
-							<Dialog.Panel className="min-w-[300px] transform overflow-hidden border border-dark-200 bg-dark-600 px-6 pb-6 pt-2 text-left align-middle sm:w-[475px]">
+							<Dialog.Panel className="min-w-[300px] transform overflow-hidden border border-dark-200 bg-dark-600 px-6 pb-6 pt-2 text-left align-middle sm:w-[485px]">
 								<Dialog.Title
 									as="h3"
 									className="flex items-center justify-between"
@@ -174,9 +177,30 @@ function DeployModal({
 									<span className="mb-1 underline underline-offset-4">
 										Expected Address
 									</span>
-									<span className="break-all text-light-400">
-										{expectedAddress && expectedAddress}
-									</span>
+									<button
+										className="break-all text-left text-light-400 outline-none hover:text-primary-100"
+										onClick={() =>
+											copyToClipboard(
+												expectedAddress,
+												setCopied
+											)
+										}
+									>
+										<span className="max-w-full">
+											{expectedAddress}
+										</span>
+										{!copied ? (
+											<PiCopy
+												className="ml-2 inline"
+												size="18px"
+											/>
+										) : (
+											<PiCheckSquareOffset
+												className="ml-2 inline text-good-accent"
+												size="18px"
+											/>
+										)}
+									</button>
 									{successfulSignature ? (
 										<div className="mt-5 self-center">
 											<ModalActionButton
@@ -196,7 +220,7 @@ function DeployModal({
 												href={`${chain?.blockExplorer}/tx/${txHash}`}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="break-all text-light-400 outline-none hover:text-primary-100"
+												className="break-all text-left text-light-400 outline-none hover:text-primary-100"
 											>
 												<span className="max-w-full">
 													{txHash}
