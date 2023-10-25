@@ -230,7 +230,7 @@ class WalletService extends IWalletService {
 				)
 			) {
 				// eslint-disable-next-line no-console
-				console.error("\nError switching networ:\n", error);
+				console.error("\nError switching network:\n", error);
 			}
 		}
 	}

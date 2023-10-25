@@ -12,7 +12,7 @@ import { SupportedChain } from "../interfaces/data/chains";
 import { RootState } from "../state/store";
 
 export default function Home() {
-	const { isWalletConnected, currentNetwork } = useSelector(
+	const { isWalletConnected, currentNetwork, nativeBalance } = useSelector(
 		(state: RootState) => state.wallet
 	);
 	const [bytecode, setBytecode] = useState<string>("");
@@ -20,6 +20,7 @@ export default function Home() {
 	const [selectedChain, setSelectedChain] = useState<SupportedChain | null>(
 		null
 	);
+	const [homeErrorMessage, setHomeErrorMessage] = useState<string>("");
 
 	const closeModal = () => {
 		setSelectedChain(null);
@@ -32,18 +33,9 @@ export default function Home() {
 	};
 
 	/**
-	 * What is needed to get Create2Factory to deploy a contract on a chain?
-	 * 1. Call userNonces to get nonce
-	 * 2. Call getTransactionHash
-	 * 3. Get the user to sign the returned transaction hash
-	 * 4. Call getAddress and show the user the address
-	 * 5. Call deploy
-	 */
-
-	/**
-	 * What is needed to know which contracts have already been deployed?
-	 * 1. For every chain, query for events using the user's address (block explorer API or maybe viem)
-	 * 2. Show user list of contracts for each chain in a table.
+	 * TODO: Need to somehow know if contract has been deployed to chain.
+			 If deployed, need to render a checkmark and button to view on explorer.
+			 Else, render DeployButton.
 	 */
 
 	return (
@@ -59,11 +51,18 @@ export default function Home() {
 				<span className="mb-1 text-start font-bold">
 					Contract Bytecode
 				</span>
-				<BytecodeInput bytecode={bytecode} setBytecode={setBytecode} />
-				{/* TODO: Need to somehow know if contract has been deployed to chain.
-						  If deployed, need to render a checkmark and button to view on explorer.
-						  Else, render DeployButton.
-				*/}
+				<BytecodeInput
+					bytecode={bytecode}
+					setBytecode={setBytecode}
+					setHomeErrorMessage={setHomeErrorMessage}
+				/>
+				{homeErrorMessage && (
+					<div className="mt-2 flex w-full items-center justify-center text-sm">
+						<span className="break-all text-bad-accent">
+							{homeErrorMessage}
+						</span>
+					</div>
+				)}
 				<div className="mt-2 flex w-full max-w-sm flex-col">
 					{chainList.map((chain) => (
 						<div
@@ -84,7 +83,11 @@ export default function Home() {
 								chain={chain}
 								isWalletConnected={isWalletConnected}
 								currentNetwork={currentNetwork!}
+								nativeBalance={nativeBalance!}
+								bytecode={bytecode}
 								openModal={openModal}
+								homeErrorMessage={homeErrorMessage}
+								setHomeErrorMessage={setHomeErrorMessage}
 							/>
 						</div>
 					))}
@@ -92,6 +95,8 @@ export default function Home() {
 						isOpen={isModalOpen}
 						closeModal={closeModal}
 						chain={selectedChain!}
+						bytecode={bytecode}
+						nativeBalance={nativeBalance!}
 					/>
 				</div>
 			</div>
