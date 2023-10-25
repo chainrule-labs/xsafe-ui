@@ -104,7 +104,7 @@ function DeployModal({
 		) {
 			if (BigInt(nativeBalance!.value) === BigInt(0)) {
 				setErrorMessage(
-					`Insufficient ${chain.nativeCurrency.symbol} for gas`
+					`Insufficient ${chain.nativeCurrency.symbol} for gas.`
 				);
 			}
 		}

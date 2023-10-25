@@ -23,7 +23,9 @@ function DeployButton({
 			currentNetwork.chainId === chain?.chainId
 		) {
 			openModal(chain);
-		} else if (
+		}
+
+		if (
 			isWalletConnected &&
 			currentNetwork.isSupported &&
 			currentNetwork.chainId !== chain?.chainId
@@ -32,9 +34,6 @@ function DeployButton({
 				chainId: chain?.chainId,
 				isSupported: true,
 			});
-		} else {
-			// eslint-disable-next-line no-console
-			console.log(chain.name);
 		}
 	};
 
@@ -75,7 +74,7 @@ function DeployButton({
 		) {
 			if (BigInt(nativeBalance!.value) === BigInt(0)) {
 				setHomeErrorMessage(
-					`Insufficient ${chain.nativeCurrency.symbol} for gas`
+					`Insufficient ${chain.nativeCurrency.symbol} for gas.`
 				);
 			}
 		}

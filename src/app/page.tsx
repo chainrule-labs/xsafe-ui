@@ -32,12 +32,6 @@ export default function Home() {
 		setIsModalOpen(true);
 	};
 
-	/**
-	 * TODO: Need to somehow know if contract has been deployed to chain.
-			 If deployed, need to render a checkmark and button to view on explorer.
-			 Else, render DeployButton.
-	 */
-
 	return (
 		<div className="flex w-full flex-1 flex-col items-center justify-start py-10">
 			<div className="flex min-h-fit w-full min-w-[300px] max-w-3xl flex-col px-4">
