@@ -36,7 +36,7 @@ body {
 
 /* Custom Scrollbar */
 :root {
-	--primary-scroll: #000000; /* dark-600 */
+	--primary-scroll: #171a19; /* primary-500 */
 	--secondary-scroll: #fd6794df; /* primary-200 */
 	--secondary-scroll-hover: #fd6793; /* primary-100 */
 }

@@ -202,18 +202,36 @@ class WalletService extends IWalletService {
 	}
 
 	public async switchNetwork(network: Network): Promise<void> {
-		const result = await switchNetwork({
-			chainId: network.chainId,
-		});
+		try {
+			const result = await switchNetwork({
+				chainId: network.chainId,
+			});
 
-		if (result.id === network.chainId) {
-			store.dispatch(
-				updateCurrentNetwork({
-					chainId: network.chainId,
-					isSupported: network.isSupported,
-				})
-			);
-			this.getNativeBalance(store.getState().wallet.address!);
+			if (result.id === network.chainId) {
+				store.dispatch(
+					updateCurrentNetwork({
+						chainId: network.chainId,
+						isSupported: network.isSupported,
+					})
+				);
+				this.getNativeBalance(store.getState().wallet.address!);
+			}
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		} catch (error: any) {
+			const acceptableErrorMessages = [
+				"rejected",
+				"request reset",
+				"denied",
+			];
+
+			if (
+				!acceptableErrorMessages.some((msg) =>
+					error.message.includes(msg)
+				)
+			) {
+				// eslint-disable-next-line no-console
+				console.error("\nError switching network:\n", error);
+			}
 		}
 	}
 
