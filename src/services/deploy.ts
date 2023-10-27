@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import predictiveDeployerAbi from "../abis/predictiveDeployer.json";
 import { PREDICTIVE_DEPLOYER } from "../data/constants";
-import { IDeployService } from "../interfaces/services/deploy";
+import { IDeployService } from "../interfaces";
 import {
 	readContract,
 	signMessage,
@@ -9,7 +9,7 @@ import {
 	writeContract,
 } from "../resources";
 import store from "../state/store";
-import { keccak256Hash } from "../utils/keccak256Hash";
+import { keccak256Hash } from "../utils";
 
 /**
  * The singleton class pattern defines a `getInstance` method so that

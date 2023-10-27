@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { chainList } from "../../data/chains";
-import { SupportedChain } from "../../interfaces/data/chains";
+import { SupportedChain } from "../../interfaces";
 import { getChain } from "../../resources";
 import WalletService from "../../services/wallet";
 import { RootState } from "../../state/store";

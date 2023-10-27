@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { IBytecodeInput } from "../../interfaces/components/bytecodeInput";
+import { IBytecodeInput } from "../../interfaces";
 import { RootState } from "../../state/store";
-import { isHex } from "../../utils/isHex";
+import { isHex } from "../../utils";
 
 function BytecodeInput({
 	bytecode,

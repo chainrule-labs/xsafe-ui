@@ -1,7 +1,7 @@
 import React from "react";
 import { FaRegCircleDot } from "react-icons/fa6";
 
-import { IChainsTable } from "../../interfaces/components/chainsTable";
+import { IChainsTable } from "../../interfaces";
 import DeployButton from "../DeployButton";
 
 function ChainsTable({

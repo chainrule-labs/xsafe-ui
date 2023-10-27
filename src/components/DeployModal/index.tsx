@@ -5,11 +5,11 @@ import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { PiCheckSquareOffset, PiCopy } from "react-icons/pi";
 import { useSelector } from "react-redux";
 
-import { IDeployModal } from "../../interfaces/components/deployModal";
+import { IDeployModal } from "../../interfaces";
 import DeployService from "../../services/deploy";
 import WalletService from "../../services/wallet";
 import { RootState } from "../../state/store";
-import { copyToClipboard } from "../../utils/copyToClipboard";
+import { copyToClipboard } from "../../utils";
 import ModalActionButton from "../ModalActionButton";
 
 function DeployModal({

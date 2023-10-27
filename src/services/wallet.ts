@@ -1,13 +1,13 @@
 /* eslint-disable no-use-before-define */
-import { IWalletService } from "../interfaces/services/wallet";
 import {
 	EIP1193Provider,
 	Ens,
+	IWalletService,
 	Network,
 	Wallet,
 	WalletClient,
 	WalletType,
-} from "../interfaces/state/wallet";
+} from "../interfaces";
 import {
 	connect,
 	disconnect,
@@ -30,7 +30,7 @@ import {
 	updateEns,
 	updateNativeBalance,
 } from "../state/walletActions";
-import { isMobile } from "../utils/isMobile";
+import { isMobile } from "../utils";
 
 /**
  * The singleton class pattern defines a `getInstance` method so that

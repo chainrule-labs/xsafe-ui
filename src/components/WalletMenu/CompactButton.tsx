@@ -2,7 +2,7 @@ import React from "react";
 import Blockies from "react-blockies";
 import { AiFillCaretDown } from "react-icons/ai";
 
-import { IWalletMenuButton } from "../../interfaces/components/walletMenu";
+import { IWalletMenuButton } from "../../interfaces";
 
 function CompactButton({ ens, address }: IWalletMenuButton) {
 	return (

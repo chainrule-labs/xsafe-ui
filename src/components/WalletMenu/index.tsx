@@ -7,9 +7,11 @@ import { useSelector } from "react-redux";
 import { getChain } from "../../resources";
 import WalletService from "../../services/wallet";
 import { RootState } from "../../state/store";
-import { copyToClipboard } from "../../utils/copyToClipboard";
-import { getTokenDisplayUnits } from "../../utils/getTokenDisplayUnits";
-import { truncateAddress } from "../../utils/truncateAddress";
+import {
+	copyToClipboard,
+	getTokenDisplayUnits,
+	truncateAddress,
+} from "../../utils";
 import CompactButton from "./CompactButton";
 import FullButton from "./FullButton";
 

@@ -1,4 +1,4 @@
-import { Wallet, WalletType } from "../interfaces/state/wallet";
+import { Wallet, WalletType } from "../interfaces";
 
 export const walletList: Wallet[] = [
 	{

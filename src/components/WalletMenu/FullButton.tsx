@@ -2,8 +2,8 @@ import React from "react";
 import Blockies from "react-blockies";
 import { AiFillCaretDown } from "react-icons/ai";
 
-import { IWalletMenuButton } from "../../interfaces/components/walletMenu";
-import { truncateAddress } from "../../utils/truncateAddress";
+import { IWalletMenuButton } from "../../interfaces";
+import { truncateAddress } from "../../utils";
 
 function FullButton({ ens, address }: IWalletMenuButton) {
 	return (

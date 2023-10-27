@@ -6,7 +6,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { AUTO_CONNECT, LAST_WALLET_CONNECTED } from "../../data/constants";
 import { walletList } from "../../data/wallets";
-import { WalletType } from "../../interfaces/state/wallet";
+import { WalletType } from "../../interfaces";
 import WalletService from "../../services/wallet";
 
 function ConnectButton() {
