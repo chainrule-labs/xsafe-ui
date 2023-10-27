@@ -8,7 +8,7 @@ import ChainsTable from "../components/ChainsTable";
 import ContractsTable from "../components/ContractsTable";
 import DeployModal from "../components/DeployModal";
 import { chainList } from "../data/chains";
-import { SupportedChain } from "../interfaces/data/chains";
+import { SupportedChain } from "../interfaces";
 import { getChain } from "../resources";
 import DeployService from "../services/deploy";
 import { RootState } from "../state/store";

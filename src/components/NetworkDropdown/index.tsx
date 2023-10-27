@@ -4,7 +4,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 import { IoWarningOutline } from "react-icons/io5";
 
 import { DISABLED_CHAINS } from "../../data/constants";
-import { INetworkDropdown } from "../../interfaces/components/networkDropdown";
+import { INetworkDropdown } from "../../interfaces";
 import Tooltip from "../Tooltip";
 
 function NetworkDropdown({

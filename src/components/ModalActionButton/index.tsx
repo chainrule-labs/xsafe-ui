@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useSelector } from "react-redux";
 
-import { IModalActionButton } from "../../interfaces/components/modalActionButton";
+import { IModalActionButton } from "../../interfaces";
 import { RootState } from "../../state/store";
-import { isHex } from "../../utils/isHex";
+import { isHex } from "../../utils";
 
 function ModalActionButton({
 	action,

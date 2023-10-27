@@ -1,4 +1,4 @@
-import { SupportedChain } from "../interfaces/data/chains";
+import { SupportedChain } from "../interfaces";
 
 export const chainList: SupportedChain[] = [
 	// ********** Ethereum ********** //

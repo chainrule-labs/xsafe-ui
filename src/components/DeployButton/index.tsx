@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import { DISABLED_CHAINS } from "../../data/constants";
-import { IDeployButton } from "../../interfaces/components/deployButton";
+import { IDeployButton } from "../../interfaces";
 import WalletService from "../../services/wallet";
-import { isHex } from "../../utils/isHex";
+import { isHex } from "../../utils";
 
 function DeployButton({
 	chain,

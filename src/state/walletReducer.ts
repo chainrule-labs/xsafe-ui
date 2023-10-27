@@ -1,5 +1,5 @@
 /* eslint-disable default-param-last */
-import { WalletActions, WalletState } from "../interfaces/state/wallet";
+import { WalletActions, WalletState } from "../interfaces";
 
 const initialState: WalletState = {
 	isWalletConnected: false,

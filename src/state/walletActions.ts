@@ -9,7 +9,7 @@ import {
 	IUpdateNativeBalance,
 	Network,
 	Wallet,
-} from "../interfaces/state/wallet";
+} from "../interfaces";
 
 export const updateConnectionStatus = (
 	isWalletConnected: boolean

@@ -1,5 +1,5 @@
 import { chainList } from "../data/chains";
-import { IGetChain } from "../interfaces/resources/getChain";
+import { IGetChain } from "../interfaces";
 
 export const getChain = ({ name, chainId }: IGetChain) => {
 	if (name) {

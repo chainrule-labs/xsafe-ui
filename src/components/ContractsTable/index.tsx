@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { PiCheckSquareOffset, PiCopy } from "react-icons/pi";
 
-import { IContractsTable } from "../../interfaces/components/contractsTable";
+import { IContractsTable } from "../../interfaces";
 import { getChain } from "../../resources";
-import { copyToClipboard } from "../../utils/copyToClipboard";
+import { copyToClipboard } from "../../utils";
 
 function ContractsTable({
 	deployedContracts,

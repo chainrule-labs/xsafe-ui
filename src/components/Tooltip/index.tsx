@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ITooltip } from "../../interfaces/components/tooltip";
+import { ITooltip } from "../../interfaces";
 
 function Tooltip({ children, tip }: ITooltip) {
 	return (
