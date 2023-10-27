@@ -6,5 +6,6 @@ export interface IDeployModal {
 	closeModal: () => void;
 	chain: SupportedChain;
 	bytecode: string;
+	setDeployedContracts: (value: string[]) => void;
 	nativeBalance: Balance;
 }

@@ -12,4 +12,5 @@ export const rpcUrlMap: Record<number, string> = {
 	8453: process.env.PRIVATE_BASE_RPC!,
 	84531: process.env.PRIVATE_BASE_GOERLI_RPC!,
 	5: process.env.PRIVATE_GOERLI_RPC!,
+	11155111: process.env.PRIVATE_SEPOLIA_RPC!,
 };

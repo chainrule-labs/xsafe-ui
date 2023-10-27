@@ -58,7 +58,7 @@ function ModalActionButton({
 			}
 			className={`${
 				!valid && "cursor-not-allowed"
-			} offset-border z-10 flex h-10 w-20 shrink-0 items-center justify-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100`}
+			} offset-border flex h-10 w-20 shrink-0 items-center justify-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100`}
 			onClick={() => action()}
 			disabled={!valid}
 		>

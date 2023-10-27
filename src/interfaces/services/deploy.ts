@@ -4,8 +4,13 @@ export abstract class IDeployService {
 		setExpectedAddress: (value: `0x${string}`) => void
 	): Promise<void>;
 
+	abstract getDeploymentHistory(
+		setDeployedContracts: (value: string[]) => void
+	): Promise<void>;
+
 	abstract sign(
 		setIsLoading: (value: boolean) => void,
+		bytecode: string,
 		setSignature: (value: string) => void,
 		setSuccessfulSignature: (value: boolean) => void,
 		setErrorMessage: (value: string) => void

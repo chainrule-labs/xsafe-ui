@@ -30,6 +30,7 @@ import {
 	mainnet,
 	optimism,
 	polygon,
+	sepolia,
 } from "@wagmi/core/chains";
 import { CoinbaseWalletConnector } from "@wagmi/core/connectors/coinbaseWallet";
 import { InjectedConnector } from "@wagmi/core/connectors/injected";
@@ -55,6 +56,7 @@ const { chains, publicClient } = configureChains(
 		mainnet,
 		optimism,
 		polygon,
+		sepolia,
 	],
 	[
 		jsonRpcProvider({
