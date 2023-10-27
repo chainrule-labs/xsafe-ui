@@ -29,9 +29,10 @@ module.exports = withPWA({
 		PRIVATE_GOERLI_RPC: process.env.PRIVATE_GOERLI_RPC,
 		PRIVATE_SEPOLIA_RPC: process.env.PRIVATE_SEPOLIA_RPC,
 		WC_PROJECT_ID: process.env.WC_PROJECT_ID,
-		ADMIN_EMAIL: process.env.ADMIN_EMAIL,
 
 		// ********* PUBLIC ********* //
-		APP_URL: "https://xsafe.dev",
+		APP_URL: "https://xsafe.chainrule.io",
+		GITHUB_URL: "https://github.com/chainrule-labs",
+		TWITTER_URL: "https://twitter.com/chainrule_io",
 	},
 });
