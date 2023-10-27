@@ -249,9 +249,52 @@
 	{
 		"inputs": [
 			{
+				"internalType": "bytes",
+				"name": "_bytecode",
+				"type": "bytes"
+			}
+		],
+		"name": "getBytecodeHash",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "_principal",
 				"type": "address"
+			}
+		],
+		"name": "getDeploymentHistory",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_principal",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes",
+				"name": "_bytecode",
+				"type": "bytes"
 			},
 			{
 				"internalType": "uint256",
@@ -347,6 +390,11 @@
 				"internalType": "address",
 				"name": "",
 				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
 			}
 		],
 		"name": "userNonces",
@@ -359,5 +407,9 @@
 		],
 		"stateMutability": "view",
 		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
 	}
 ]

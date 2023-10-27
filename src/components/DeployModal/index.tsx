@@ -17,6 +17,7 @@ function DeployModal({
 	closeModal,
 	chain,
 	bytecode,
+	setDeployedContracts,
 	nativeBalance,
 }: IDeployModal) {
 	const { isWalletConnected, currentNetwork, address } = useSelector(
@@ -51,6 +52,7 @@ function DeployModal({
 	const handleSignature = async () => {
 		DeployService.getInstance().sign(
 			setIsLoading,
+			bytecode,
 			setSignature,
 			setSuccessfulSignature,
 			setErrorMessage
@@ -66,6 +68,12 @@ function DeployModal({
 			setSuccessfulDeployment,
 			setSuccessfulSignature,
 			setErrorMessage
+		);
+	};
+
+	const getDeployedContracts = async () => {
+		await DeployService.getInstance().getDeploymentHistory(
+			setDeployedContracts
 		);
 	};
 
@@ -91,6 +99,7 @@ function DeployModal({
 		) {
 			if (successfulDeployment) {
 				setSuccessMessage("Contract successfully deployed!");
+				getDeployedContracts();
 				WalletService.getInstance().getNativeBalance(address!);
 			}
 		}
@@ -212,7 +221,7 @@ function DeployModal({
 											/>
 										</div>
 									) : successfulDeployment ? (
-										<div className="mt-3 flex flex-col">
+										<div className="mt-3 flex w-full flex-col">
 											<span className="mb-1 underline underline-offset-4">
 												TX Hash
 											</span>
@@ -237,7 +246,7 @@ function DeployModal({
 															"#395754", // dark-200
 													} as React.CSSProperties
 												}
-												className="offset-border z-10 mt-5 flex h-10 w-20 shrink-0 items-center justify-center self-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100"
+												className="offset-border mt-5 flex h-10 w-20 shrink-0 items-center justify-center self-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100"
 												onClick={() => {
 													resetState();
 													closeModal();

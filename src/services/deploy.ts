@@ -9,6 +9,7 @@ import {
 	writeContract,
 } from "../resources";
 import store from "../state/store";
+import { keccak256Hash } from "../utils/keccak256Hash";
 
 /**
  * The singleton class pattern defines a `getInstance` method so that
@@ -45,8 +46,24 @@ class DeployService extends IDeployService {
 		setExpectedAddress(contractAddress);
 	}
 
+	public async getDeploymentHistory(
+		setDeployedContracts: (value: string[]) => void
+	): Promise<void> {
+		const principal = store.getState().wallet.address;
+
+		const contractAddresses = (await readContract({
+			address: PREDICTIVE_DEPLOYER,
+			abi: predictiveDeployerAbi,
+			functionName: "getDeploymentHistory",
+			args: [principal],
+		})) as string[];
+
+		setDeployedContracts(contractAddresses);
+	}
+
 	public async sign(
 		setIsLoading: (value: boolean) => void,
+		bytecode: string,
 		setSignature: (value: string) => void,
 		setSuccessfulSignature: (value: boolean) => void,
 		setErrorMessage: (value: string) => void
@@ -61,19 +78,19 @@ class DeployService extends IDeployService {
 				address: PREDICTIVE_DEPLOYER,
 				abi: predictiveDeployerAbi,
 				functionName: "userNonces",
-				args: [principal],
+				args: [principal, keccak256Hash(bytecode as `0x${string}`)],
 			})) as bigint;
 
-			const messageHash = (await readContract({
+			const transactionHash = (await readContract({
 				address: PREDICTIVE_DEPLOYER,
 				abi: predictiveDeployerAbi,
 				functionName: "getTransactionHash",
-				args: [principal, nonce],
+				args: [principal, bytecode, nonce],
 			})) as `0x${string}`;
 
 			const signature = await signMessage({
 				message: {
-					raw: messageHash,
+					raw: transactionHash,
 				} as unknown as string,
 			});
 

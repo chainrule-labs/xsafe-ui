@@ -144,4 +144,15 @@ export const chainList: SupportedChain[] = [
 		blockExplorer: "https://goerli.etherscan.io",
 		chainId: 5,
 	},
+	// ********** Sepolia ********** //
+	{
+		name: "Sepolia",
+		imageSource: "/images/iconEthereum.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://sepolia.etherscan.io",
+		chainId: 11155111,
+	},
 ];

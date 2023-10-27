@@ -3,6 +3,7 @@ export {
 	formatUnits,
 	isAddress,
 	isHex,
+	keccak256,
 	parseUnits,
 } from "./blockchainInterface";
 export { getChain } from "./getChain";
