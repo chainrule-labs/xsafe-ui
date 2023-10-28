@@ -25,6 +25,13 @@ function ChainsTable({
 						>
 							<td className="px-6 py-4">
 								<div className="flex items-center">
+									<div className="mr-3 flex h-7 w-7 shrink-0 items-center justify-center">
+										<img
+											className="w-7"
+											alt="listedChainImage"
+											src={chain.imageSource}
+										/>
+									</div>
 									<span className="mr-3">{chain.name}</span>
 									{isWalletConnected &&
 									currentNetwork?.chainId ===
