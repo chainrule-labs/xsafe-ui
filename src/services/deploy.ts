@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
-import predictiveDeployerAbi from "../abis/predictiveDeployer.json";
-import { PREDICTIVE_DEPLOYER } from "../data/constants";
+import create3factoryAbi from "../abis/create3factory.json";
+import { CREATE3_FACTORY } from "../data/constants";
 import { IDeployService } from "../interfaces";
 import {
 	readContract,
@@ -9,7 +9,6 @@ import {
 	writeContract,
 } from "../resources";
 import store from "../state/store";
-import { keccak256Hash } from "../utils";
 
 /**
  * The singleton class pattern defines a `getInstance` method so that
@@ -37,8 +36,8 @@ class DeployService extends IDeployService {
 		const principal = store.getState().wallet.address;
 
 		const contractAddress = (await readContract({
-			address: PREDICTIVE_DEPLOYER,
-			abi: predictiveDeployerAbi,
+			address: CREATE3_FACTORY,
+			abi: create3factoryAbi,
 			functionName: "getAddress",
 			args: [principal, bytecode as `0x${string}`],
 		})) as `0x${string}`;
@@ -52,8 +51,8 @@ class DeployService extends IDeployService {
 		const principal = store.getState().wallet.address;
 
 		const contractAddresses = (await readContract({
-			address: PREDICTIVE_DEPLOYER,
-			abi: predictiveDeployerAbi,
+			address: CREATE3_FACTORY,
+			abi: create3factoryAbi,
 			functionName: "getDeploymentHistory",
 			args: [principal],
 		})) as string[];
@@ -74,18 +73,11 @@ class DeployService extends IDeployService {
 		const principal = store.getState().wallet.address;
 
 		try {
-			const nonce = (await readContract({
-				address: PREDICTIVE_DEPLOYER,
-				abi: predictiveDeployerAbi,
-				functionName: "userNonces",
-				args: [principal, keccak256Hash(bytecode as `0x${string}`)],
-			})) as bigint;
-
 			const transactionHash = (await readContract({
-				address: PREDICTIVE_DEPLOYER,
-				abi: predictiveDeployerAbi,
+				address: CREATE3_FACTORY,
+				abi: create3factoryAbi,
 				functionName: "getTransactionHash",
-				args: [principal, bytecode, nonce],
+				args: [principal, bytecode],
 			})) as `0x${string}`;
 
 			const signature = await signMessage({
@@ -124,6 +116,7 @@ class DeployService extends IDeployService {
 		setIsLoading: (value: boolean) => void,
 		signature: string,
 		bytecode: string,
+		constructorArgsBytecode: string,
 		setTxHash: (value: `0x${string}`) => void,
 		setSuccessfulDeployment: (value: boolean) => void,
 		setSuccessfulSignature: (value: boolean) => void,
@@ -136,10 +129,10 @@ class DeployService extends IDeployService {
 			const principal = store.getState().wallet.address;
 
 			const { hash } = await writeContract({
-				address: PREDICTIVE_DEPLOYER,
-				abi: predictiveDeployerAbi,
+				address: CREATE3_FACTORY,
+				abi: create3factoryAbi,
 				functionName: "deploy",
-				args: [principal, signature, bytecode],
+				args: [principal, signature, bytecode, constructorArgsBytecode],
 			});
 
 			const txReceipt = await waitForTransaction({

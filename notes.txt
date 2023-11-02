@@ -1,0 +1,21 @@
+Case 1:
+	User does not click the "+ Add Argument" button
+		- Nothing to worry about, since argumentList.length is 0
+
+Case 2:
+	user clicks the "+ Add Argument" button 1 or more times, but does not add the type or argument value
+		- This means that argumentList.length is > 0
+		- Need to require that the type and value are populated for each, and validated, else setHomeErrorMessage("Invalid constructor arguments.")
+
+When the "+ Add Argument" button is clicked:
+	- append an object as shown below
+		{
+		    id: "{auto-generated uuid}",
+		    type: "",
+		    value: ""
+		}
+	- When the type or value for an argument changes, need to update the object at the corresponding index of argumentList
+		- The type will be updated via the dropdown
+		- The value will be updated via the input
+When the "- Remove" button is clicked:
+	- Delete the object at the corresponding index of argumentList 

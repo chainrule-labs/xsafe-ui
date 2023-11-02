@@ -20,6 +20,7 @@ export abstract class IDeployService {
 		setIsLoading: (value: boolean) => void,
 		signature: string,
 		bytecode: string,
+		constructorArgsBytecode: string,
 		setTxHash: (value: `0x${string}`) => void,
 		setSuccessfulDeployment: (value: boolean) => void,
 		setSuccessfulSignature: (value: boolean) => void,

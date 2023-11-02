@@ -100,10 +100,16 @@
 				"type": "address"
 			},
 			{
-				"indexed": false,
+				"indexed": true,
 				"internalType": "bytes32",
-				"name": "hashedBytecode",
+				"name": "hashedStrippedBytecode",
 				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "bytes",
+				"name": "constructorArgsBytecode",
+				"type": "bytes"
 			},
 			{
 				"indexed": false,
@@ -187,19 +193,18 @@
 			},
 			{
 				"internalType": "bytes",
-				"name": "_bytecode",
+				"name": "_strippedBytecode",
+				"type": "bytes"
+			},
+			{
+				"internalType": "bytes",
+				"name": "_constructorArgsBytecode",
 				"type": "bytes"
 			}
 		],
 		"name": "deploy",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "nonpayable",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -231,7 +236,7 @@
 			},
 			{
 				"internalType": "bytes",
-				"name": "_bytecode",
+				"name": "_strippedBytecode",
 				"type": "bytes"
 			}
 		],
@@ -250,7 +255,7 @@
 		"inputs": [
 			{
 				"internalType": "bytes",
-				"name": "_bytecode",
+				"name": "_strippedBytecode",
 				"type": "bytes"
 			}
 		],
@@ -293,13 +298,8 @@
 			},
 			{
 				"internalType": "bytes",
-				"name": "_bytecode",
+				"name": "_strippedBytecode",
 				"type": "bytes"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_nonce",
-				"type": "uint256"
 			}
 		],
 		"name": "getTransactionHash",
