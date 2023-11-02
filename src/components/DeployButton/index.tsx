@@ -12,6 +12,7 @@ function DeployButton({
 	nativeBalance,
 	openModal,
 	bytecode,
+	argumentList,
 	homeErrorMessage,
 	setHomeErrorMessage,
 }: IDeployButton) {
@@ -45,11 +46,21 @@ function DeployButton({
 			bytecodeIsValid = isHex(bytecode);
 		}
 
+		let argumentsAreValid = false;
+		if (argumentList) {
+			argumentsAreValid = argumentList.every(
+				(arg) => arg.type !== "" && arg.value !== ""
+			);
+		} else {
+			argumentsAreValid = true;
+		}
+
 		const basicConditions = [
 			!homeErrorMessage,
 			isWalletConnected,
 			currentNetwork?.isSupported,
 			BigInt(nativeBalance.value) > BigInt(0),
+			argumentsAreValid,
 		];
 
 		setValid(bytecodeIsValid && basicConditions.every(Boolean));
@@ -65,6 +76,7 @@ function DeployButton({
 		currentNetwork,
 		bytecode,
 		nativeBalance,
+		argumentList,
 	]);
 
 	useEffect(() => {

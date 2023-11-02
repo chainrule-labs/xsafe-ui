@@ -1,9 +1,11 @@
 export type { EIP1193Provider, WalletClient } from "./blockchainInterface";
 export {
+	encodeAbiParameters,
 	formatUnits,
 	isAddress,
 	isHex,
 	keccak256,
+	parseAbiParameters,
 	parseUnits,
 } from "./blockchainInterface";
 export { getChain } from "./getChain";

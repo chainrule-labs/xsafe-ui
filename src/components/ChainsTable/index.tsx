@@ -10,6 +10,7 @@ function ChainsTable({
 	currentNetwork,
 	nativeBalance,
 	bytecode,
+	argumentList,
 	openModal,
 	homeErrorMessage,
 	setHomeErrorMessage,
@@ -50,6 +51,7 @@ function ChainsTable({
 									currentNetwork={currentNetwork!}
 									nativeBalance={nativeBalance!}
 									bytecode={bytecode}
+									argumentList={argumentList}
 									openModal={openModal}
 									homeErrorMessage={homeErrorMessage}
 									setHomeErrorMessage={setHomeErrorMessage}

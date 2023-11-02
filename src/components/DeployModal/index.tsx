@@ -9,7 +9,11 @@ import { IDeployModal } from "../../interfaces";
 import DeployService from "../../services/deploy";
 import WalletService from "../../services/wallet";
 import { RootState } from "../../state/store";
-import { copyToClipboard } from "../../utils";
+import {
+	copyToClipboard,
+	encodeAbiParameters,
+	parseAbiParameters,
+} from "../../utils";
 import ModalActionButton from "../ModalActionButton";
 
 function DeployModal({
@@ -17,6 +21,7 @@ function DeployModal({
 	closeModal,
 	chain,
 	bytecode,
+	argumentList,
 	setDeployedContracts,
 	nativeBalance,
 }: IDeployModal) {
@@ -25,15 +30,15 @@ function DeployModal({
 	);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [signature, setSignature] = useState<string>("");
-	const [successfulSignature, setSuccessfulSignature] =
-		useState<boolean>(false);
-	const [successfulDeployment, setSuccessfulDeployment] =
-		useState<boolean>(false);
 	const [errorMessage, setErrorMessage] = useState<string>("");
 	const [successMessage, setSuccessMessage] = useState<string>("");
 	const [expectedAddress, setExpectedAddress] = useState<`0x${string}`>("0x");
 	const [txHash, setTxHash] = useState<`0x${string}`>("0x");
 	const [copied, setCopied] = useState<boolean>(false);
+	const [successfulSignature, setSuccessfulSignature] =
+		useState<boolean>(false);
+	const [successfulDeployment, setSuccessfulDeployment] =
+		useState<boolean>(false);
 
 	const resetState = () => {
 		setSignature("");
@@ -59,11 +64,25 @@ function DeployModal({
 		);
 	};
 
+	const encodeConstructorArgs = (): string => {
+		if (argumentList) {
+			const types = argumentList.map((arg) => arg.type).join(",");
+			const values = argumentList.map((arg) => arg.value);
+
+			const formattedTypes = parseAbiParameters(types);
+			return encodeAbiParameters(formattedTypes, values);
+		}
+		return "0x";
+	};
+
 	const handleDeployment = async () => {
+		const encodedArgs = encodeConstructorArgs();
+
 		DeployService.getInstance().deploy(
 			setIsLoading,
 			signature,
 			bytecode,
+			encodedArgs,
 			setTxHash,
 			setSuccessfulDeployment,
 			setSuccessfulSignature,

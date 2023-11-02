@@ -8,7 +8,7 @@ import { SupportedChain } from "../../interfaces";
 import { getChain } from "../../resources";
 import WalletService from "../../services/wallet";
 import { RootState } from "../../state/store";
-import ConnectButton from "../ConnectButton";
+import ConnectDropdown from "../ConnectDropdown";
 import NetworkDropdown from "../NetworkDropdown";
 import WalletMenu from "../WalletMenu";
 
@@ -72,7 +72,7 @@ function Header() {
 						<WalletMenu />
 					</div>
 				) : (
-					<ConnectButton />
+					<ConnectDropdown />
 				)}
 			</div>
 		</header>

@@ -3,12 +3,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
+import ArgumentButton from "../components/ArgumentButton";
+import ArgumentInput from "../components/ArgumentInput";
+import ArgumentTypeDropDown from "../components/ArgumentTypeDropdown";
 import BytecodeInput from "../components/BytecodeInput";
 import ChainsTable from "../components/ChainsTable";
 import ContractsTable from "../components/ContractsTable";
 import DeployModal from "../components/DeployModal";
+import { solidityTypeList } from "../data/arguments";
 import { chainList } from "../data/chains";
-import { SupportedChain } from "../interfaces";
+import { Argument, SupportedChain } from "../interfaces";
 import { getChain } from "../resources";
 import DeployService from "../services/deploy";
 import { RootState } from "../state/store";
@@ -17,13 +21,14 @@ export default function Home() {
 	const { isWalletConnected, currentNetwork, nativeBalance } = useSelector(
 		(state: RootState) => state.wallet
 	);
-	const [bytecode, setBytecode] = useState<string>("");
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const [homeErrorMessage, setHomeErrorMessage] = useState<string>("");
+	const [deployedContracts, setDeployedContracts] = useState<string[]>([""]);
+	const [bytecode, setBytecode] = useState<string>("");
+	const [argumentList, setArgumentList] = useState<Argument[] | null>(null);
 	const [selectedChain, setSelectedChain] = useState<SupportedChain | null>(
 		null
 	);
-	const [homeErrorMessage, setHomeErrorMessage] = useState<string>("");
-	const [deployedContracts, setDeployedContracts] = useState<string[]>([""]);
 
 	const closeModal = () => {
 		setSelectedChain(null);
@@ -58,14 +63,57 @@ export default function Home() {
 					address.
 				</span>
 				<span className="mb-5">Forget nonces and salts.</span>
-				<span className="mb-1 text-start font-bold text-primary-100">
-					Contract Bytecode
+				<span className="mb-1 font-bold text-primary-100">
+					Contract Bytecode{" "}
 				</span>
 				<BytecodeInput
 					bytecode={bytecode}
 					setBytecode={setBytecode}
 					setHomeErrorMessage={setHomeErrorMessage}
 				/>
+				<span className="mt-8 font-bold text-primary-100">
+					Constructor Arguments{" "}
+				</span>
+				<div className="flex w-full flex-col">
+					{argumentList && argumentList.length > 0
+						? argumentList.map((arg) => (
+								<div
+									className="mt-2 flex w-full flex-col smd:flex-row"
+									key={arg.id}
+								>
+									<ArgumentTypeDropDown
+										solidityTypes={solidityTypeList}
+										argumentList={argumentList}
+										setArgumentList={setArgumentList}
+										argumentId={arg.id}
+									/>
+									<div className="mb-4 ml-0 mt-2 flex smd:mb-0 smd:ml-2 smd:mt-0 smd:w-80 smd:max-w-full smd:grow">
+										<ArgumentInput
+											argumentList={argumentList}
+											setArgumentList={setArgumentList}
+											argumentId={arg.id}
+										/>
+										<div className="mr-2" />
+										<ArgumentButton
+											argumentList={argumentList}
+											setArgumentList={setArgumentList}
+											argumentId={arg.id}
+										/>
+									</div>
+								</div>
+						  ))
+						: null}
+					{argumentList ? (
+						<div className="smd:mt-4" />
+					) : (
+						<div className="mt-1" />
+					)}
+					<ArgumentButton
+						add
+						argumentList={argumentList}
+						setArgumentList={setArgumentList}
+					/>
+				</div>
 				{homeErrorMessage && (
 					<div className="mt-2 flex w-full items-center justify-center text-sm">
 						<span className="break-all text-bad-accent">
@@ -74,9 +122,7 @@ export default function Home() {
 					</div>
 				)}
 				<div className="mt-8 flex w-full flex-col">
-					<span className="text-start font-bold text-primary-100">
-						Chains
-					</span>
+					<span className="font-bold text-primary-100">Chains</span>
 					<span className="mt-2">
 						<span className="text-primary-100">NOTE: </span>
 						This is a beta version. The only chains currently
@@ -88,6 +134,7 @@ export default function Home() {
 						currentNetwork={currentNetwork!}
 						nativeBalance={nativeBalance!}
 						bytecode={bytecode}
+						argumentList={argumentList}
 						openModal={openModal}
 						homeErrorMessage={homeErrorMessage}
 						setHomeErrorMessage={setHomeErrorMessage}
@@ -97,6 +144,7 @@ export default function Home() {
 						closeModal={closeModal}
 						chain={selectedChain!}
 						bytecode={bytecode}
+						argumentList={argumentList}
 						setDeployedContracts={setDeployedContracts}
 						nativeBalance={nativeBalance!}
 					/>
@@ -105,7 +153,7 @@ export default function Home() {
 				currentNetwork?.isSupported &&
 				deployedContracts.length > 0 ? (
 					<>
-						<span className="mb-1 mt-10 text-start font-bold text-primary-100">
+						<span className="mb-1 mt-10 font-bold text-primary-100">
 							Deployed Contracts on{" "}
 							{
 								getChain({ chainId: currentNetwork?.chainId })

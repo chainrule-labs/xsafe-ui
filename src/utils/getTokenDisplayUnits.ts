@@ -1,4 +1,4 @@
-import { formatUnits } from "../resources";
+import { formatUnits } from "./formatUnits";
 import { getMinimumFractionDigits } from "./getMinimumFractionDigits";
 
 export const getTokenDisplayUnits = (

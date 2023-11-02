@@ -59,7 +59,7 @@ function NetworkDropdown({
 					<Transition show={open}>
 						<Listbox.Options
 							static
-							className="relative right-14 mt-[10.5px] max-h-64 w-44 overflow-hidden overflow-y-auto bg-dark-600 outline-none ring-1 ring-dark-200"
+							className="relative right-14 mt-3 max-h-64 w-44 overflow-hidden overflow-y-auto bg-dark-600 outline-none ring-1 ring-dark-200"
 						>
 							{chainList.map((chain) => (
 								<Listbox.Option
