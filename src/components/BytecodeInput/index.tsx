@@ -1,8 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 import { IBytecodeInput } from "../../interfaces";
-import { RootState } from "../../state/store";
 import { isHex } from "../../utils";
 
 function BytecodeInput({
@@ -10,21 +8,17 @@ function BytecodeInput({
 	setBytecode,
 	setHomeErrorMessage,
 }: IBytecodeInput) {
-	const { isWalletConnected } = useSelector(
-		(state: RootState) => state.wallet
-	);
-
 	const handleInputChange = async (input: string) => {
 		setBytecode(input);
 
-		if (isWalletConnected) {
-			const isBytecodeValid = isHex(input);
+		const isValid = isHex(input);
 
-			if (input.length > 0 && !isBytecodeValid) {
-				setHomeErrorMessage("Invalid bytecode.");
-			} else {
-				setHomeErrorMessage("");
-			}
+		if (input.length === 0) {
+			setHomeErrorMessage("");
+		} else if (input.length > 0 && isValid) {
+			setHomeErrorMessage("");
+		} else {
+			setHomeErrorMessage("Invalid bytecode.");
 		}
 	};
 

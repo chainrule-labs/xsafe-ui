@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { PiCheckSquareOffset, PiCopy } from "react-icons/pi";
 import { useSelector } from "react-redux";
 
 import ArgumentButton from "../components/ArgumentButton";
@@ -16,11 +17,17 @@ import { Argument, SupportedChain } from "../interfaces";
 import { getChain } from "../resources";
 import DeployService from "../services/deploy";
 import { RootState } from "../state/store";
+import {
+	copyToClipboard,
+	encodeAbiParameters,
+	parseAbiParameters,
+} from "../utils";
 
 export default function Home() {
 	const { isWalletConnected, currentNetwork, nativeBalance } = useSelector(
 		(state: RootState) => state.wallet
 	);
+	const [copied, setCopied] = useState<boolean>(false);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const [homeErrorMessage, setHomeErrorMessage] = useState<string>("");
 	const [deployedContracts, setDeployedContracts] = useState<string[]>([""]);
@@ -29,6 +36,8 @@ export default function Home() {
 	const [selectedChain, setSelectedChain] = useState<SupportedChain | null>(
 		null
 	);
+	const [constructorArgsBytecode, setConstructorArgsBytecode] =
+		useState<string>("");
 
 	const closeModal = () => {
 		setSelectedChain(null);
@@ -46,11 +55,31 @@ export default function Home() {
 		);
 	};
 
+	const encodeConstructorArgs = (): string => {
+		if (argumentList) {
+			if (
+				argumentList.every((arg) => arg.type !== "" && arg.value !== "")
+			) {
+				const types = argumentList.map((arg) => arg.type).join(",");
+				const values = argumentList.map((arg) => arg.value);
+				const formattedTypes = parseAbiParameters(types);
+				return encodeAbiParameters(formattedTypes, values);
+			}
+			return "0x";
+		}
+		return "0x";
+	};
+
 	useEffect(() => {
 		if (isWalletConnected && currentNetwork?.isSupported) {
 			getDeployedContracts();
 		}
 	}, [isWalletConnected, currentNetwork]);
+
+	useEffect(() => {
+		const encodedArgs = encodeConstructorArgs();
+		setConstructorArgsBytecode(encodedArgs);
+	}, [argumentList]);
 
 	return (
 		<div className="flex w-full flex-1 flex-col items-center justify-start py-10">
@@ -91,7 +120,10 @@ export default function Home() {
 										<ArgumentInput
 											argumentList={argumentList}
 											setArgumentList={setArgumentList}
-											argumentId={arg.id}
+											argument={arg}
+											setHomeErrorMessage={
+												setHomeErrorMessage
+											}
 										/>
 										<div className="mr-2" />
 										<ArgumentButton
@@ -113,6 +145,37 @@ export default function Home() {
 						argumentList={argumentList}
 						setArgumentList={setArgumentList}
 					/>
+					{argumentList && constructorArgsBytecode ? (
+						<div className="mt-5 flex w-full flex-col">
+							<span className="mb-1">Encoded Arguments</span>
+							<div className="w-full break-all bg-dark-500 p-2 outline-none ring-1 ring-dark-200 focus:ring-dark-100">
+								<button
+									className="break-all text-left outline-none hover:text-primary-100"
+									onClick={() =>
+										copyToClipboard(
+											constructorArgsBytecode,
+											setCopied
+										)
+									}
+								>
+									<span className="max-w-full">
+										{constructorArgsBytecode}
+									</span>
+									{!copied ? (
+										<PiCopy
+											className="ml-2 inline"
+											size="18px"
+										/>
+									) : (
+										<PiCheckSquareOffset
+											className="ml-2 inline text-good-accent"
+											size="18px"
+										/>
+									)}
+								</button>
+							</div>
+						</div>
+					) : null}
 				</div>
 				{homeErrorMessage && (
 					<div className="mt-2 flex w-full items-center justify-center text-sm">
@@ -144,9 +207,9 @@ export default function Home() {
 						closeModal={closeModal}
 						chain={selectedChain!}
 						bytecode={bytecode}
-						argumentList={argumentList}
 						setDeployedContracts={setDeployedContracts}
 						nativeBalance={nativeBalance!}
+						constructorArgsBytecode={constructorArgsBytecode}
 					/>
 				</div>
 				{isWalletConnected &&
