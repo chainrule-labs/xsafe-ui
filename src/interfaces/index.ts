@@ -11,7 +11,7 @@ export type { IModalActionButton } from "./components/modalActionButton";
 export type { INetworkDropdown } from "./components/networkDropdown";
 export type { ITooltip } from "./components/tooltip";
 export type { IWalletMenuButton } from "./components/walletMenu";
-export type { Argument } from "./data/arguments";
+export type { Argument, ArgumentValue } from "./data/arguments";
 export type { SupportedChain } from "./data/chains";
 export type { IGetChain } from "./resources/getChain";
 export { IDeployService } from "./services/deploy";

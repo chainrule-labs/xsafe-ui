@@ -9,11 +9,7 @@ import { IDeployModal } from "../../interfaces";
 import DeployService from "../../services/deploy";
 import WalletService from "../../services/wallet";
 import { RootState } from "../../state/store";
-import {
-	copyToClipboard,
-	encodeAbiParameters,
-	parseAbiParameters,
-} from "../../utils";
+import { copyToClipboard } from "../../utils";
 import ModalActionButton from "../ModalActionButton";
 
 function DeployModal({
@@ -21,9 +17,9 @@ function DeployModal({
 	closeModal,
 	chain,
 	bytecode,
-	argumentList,
 	setDeployedContracts,
 	nativeBalance,
+	constructorArgsBytecode,
 }: IDeployModal) {
 	const { isWalletConnected, currentNetwork, address } = useSelector(
 		(state: RootState) => state.wallet
@@ -64,25 +60,12 @@ function DeployModal({
 		);
 	};
 
-	const encodeConstructorArgs = (): string => {
-		if (argumentList) {
-			const types = argumentList.map((arg) => arg.type).join(",");
-			const values = argumentList.map((arg) => arg.value);
-
-			const formattedTypes = parseAbiParameters(types);
-			return encodeAbiParameters(formattedTypes, values);
-		}
-		return "0x";
-	};
-
 	const handleDeployment = async () => {
-		const encodedArgs = encodeConstructorArgs();
-
 		DeployService.getInstance().deploy(
 			setIsLoading,
 			signature,
 			bytecode,
-			encodedArgs,
+			constructorArgsBytecode,
 			setTxHash,
 			setSuccessfulDeployment,
 			setSuccessfulSignature,
