@@ -58,11 +58,17 @@ export default function Home() {
 	const encodeConstructorArgs = (): string => {
 		if (argumentList) {
 			if (
-				argumentList.every((arg) => arg.type !== "" && arg.value !== "")
+				argumentList.every(
+					(arg) =>
+						arg.type !== "" &&
+						arg.value !== "" &&
+						arg.isValid === true
+				)
 			) {
 				const types = argumentList.map((arg) => arg.type).join(",");
 				const values = argumentList.map((arg) => arg.value);
 				const formattedTypes = parseAbiParameters(types);
+
 				return encodeAbiParameters(formattedTypes, values);
 			}
 			return "0x";

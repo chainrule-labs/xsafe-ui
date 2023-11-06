@@ -31,64 +31,81 @@ function ArgumentInput({
 
 	const castValue = (argType: string, value: string): ArgumentValue => {
 		if (isSolidityString(argType)) return value;
-		if (isSolidityAddress(argType)) return value;
+		if (isSolidityAddress(argType)) return value.trim();
 		if (isSolidityAddressArray(argType)) {
-			const elements = value.slice(1, -1);
-			return elements.split(",");
+			const elements = value
+				.slice(1, -1)
+				.split(",")
+				.map((el) => el.trim());
+			return elements;
 		}
-		if (isSolidityBool(argType)) return value === "true";
-		if (isSolidityBoolArray(argType))
-			return value.split(",").map((v) => v === "true");
-		if (isSolidityBytes(argType)) return value;
+		if (isSolidityBool(argType)) return value.trim() === "true";
+		if (isSolidityBoolArray(argType)) {
+			const elements = value
+				.slice(1, -1)
+				.split(",")
+				.map((el) => el.trim() === "true");
+			return elements;
+		}
+		if (isSolidityBytes(argType)) return value.trim();
 		if (isSolidityBytesArray(argType)) {
-			const elements = value.slice(1, -1);
-			return elements.split(",");
+			const elements = value
+				.slice(1, -1)
+				.split(",")
+				.map((el) => el.trim());
+			return elements;
 		}
-		if (isSolidityInt(argType)) return BigInt(value);
+		if (isSolidityInt(argType)) return BigInt(value.trim());
 		if (isSolidityIntArray(argType)) {
-			const elements = value.slice(1, -1).split(/\s*,\s*/);
-			return elements.map((element) => BigInt(element));
+			const elements = value
+				.slice(1, -1)
+				.split(",")
+				.map((el) => BigInt(el.trim()));
+			return elements;
 		}
 		return value;
 	};
 
 	const isInputValid = (value: string): boolean => {
 		let isValid = false;
-		switch (true) {
-			case isSolidityString(argument.type):
-				isValid = true;
-				break;
-			case isSolidityAddress(argument.type):
-				isValid = isValidAddress(value);
-				break;
-			case isSolidityAddressArray(argument.type):
-				isValid = isValidAddressArray(value);
-				break;
-			case isSolidityBool(argument.type):
-				isValid = isValidBool(value);
-				break;
-			case isSolidityBoolArray(argument.type):
-				isValid = isValidBoolArray(value);
-				break;
-			case isSolidityBytes(argument.type):
-				isValid = isValidBytes(value);
-				break;
-			case isSolidityBytesArray(argument.type):
-				isValid = isValidBytesArray(value);
-				break;
-			case isSolidityInt(argument.type):
-				isValid = isValidInt(value);
-				break;
-			case isSolidityIntArray(argument.type):
-				isValid = isValidIntArray(value);
-				break;
-			default:
-				isValid = false;
+
+		if (value.length > 0) {
+			switch (true) {
+				case isSolidityString(argument.type):
+					isValid = true;
+					break;
+				case isSolidityAddress(argument.type):
+					isValid = isValidAddress(value);
+					break;
+				case isSolidityAddressArray(argument.type):
+					isValid = isValidAddressArray(value);
+					break;
+				case isSolidityBool(argument.type):
+					isValid = isValidBool(value);
+					break;
+				case isSolidityBoolArray(argument.type):
+					isValid = isValidBoolArray(value);
+					break;
+				case isSolidityBytes(argument.type):
+					isValid = isValidBytes(value);
+					break;
+				case isSolidityBytesArray(argument.type):
+					isValid = isValidBytesArray(value);
+					break;
+				case isSolidityInt(argument.type):
+					isValid = isValidInt(value);
+					break;
+				case isSolidityIntArray(argument.type):
+					isValid = isValidIntArray(value);
+					break;
+				default:
+					isValid = false;
+			}
 		}
 		return isValid;
 	};
 
-	const validateInput = (value: string) => {
+	const updateValue = (value: string) => {
 		const isValid = isInputValid(value);
 
 		if (value.length === 0) {
@@ -101,7 +118,7 @@ function ArgumentInput({
 			setArgumentList(
 				argumentList!.map((arg) =>
 					arg.id === argument.id
-						? { ...arg, value: updatedValue }
+						? { ...arg, value: updatedValue, isValid: true }
 						: arg
 				)
 			);
@@ -120,19 +137,19 @@ function ArgumentInput({
 			case isSolidityAddress(argType):
 				return "Ex: 0x1D...49";
 			case isSolidityAddressArray(argType):
-				return "Ex: [0x1D...49, 0x2B...21, 0x3D...31]";
+				return "Ex: [0x1D...49,0x2B...21,0x3D...31]";
 			case isSolidityBool(argType):
 				return "Ex: true";
 			case isSolidityBoolArray(argType):
-				return "Ex: [true, false, false]";
+				return "Ex: [true,false,false]";
 			case isSolidityBytes(argType):
 				return "Ex: 0x1A3";
 			case isSolidityBytesArray(argType):
-				return "Ex: [0x1A3, 0xB4F, 0xC2E]";
+				return "Ex: [0x1A3,0xB4F,0xC2E]";
 			case isSolidityInt(argType):
 				return "Ex: 112233";
 			case isSolidityIntArray(argType):
-				return "Ex: [0, 1, 2]";
+				return "Ex: [0,1,2]";
 			default:
 				return "Ex: str0";
 		}
@@ -140,12 +157,14 @@ function ArgumentInput({
 
 	const handleValueChange = (input: string) => {
 		setArgumentValue(input);
-		validateInput(input);
+		updateValue(input);
 	};
 
-	// If argument type changes, clear the input
+	// If argument type changes, clear the input.
+	// For reference, argument.value and argument.isValid are being
+	// reset in ArgumentTypeDropdown when argument.type changes
 	useEffect(() => {
-		handleValueChange("");
+		setArgumentValue("");
 	}, [argument.type]);
 
 	return (

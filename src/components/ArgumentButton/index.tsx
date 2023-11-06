@@ -16,6 +16,7 @@ function ArgumentButton({
 				id: newId,
 				type: "",
 				value: "",
+				isValid: false,
 			};
 			setArgumentList((prev) =>
 				prev ? [...prev, newArgument] : [newArgument]
