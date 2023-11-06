@@ -49,7 +49,8 @@ function DeployButton({
 		let argumentsAreValid = false;
 		if (argumentList) {
 			argumentsAreValid = argumentList.every(
-				(arg) => arg.type !== "" && arg.value !== ""
+				(arg) =>
+					arg.type !== "" && arg.value !== "" && arg.isValid === true
 			);
 		} else {
 			argumentsAreValid = true;

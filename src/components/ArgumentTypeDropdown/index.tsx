@@ -26,7 +26,7 @@ function ArgumentTypeDropDown({
 
 		const updatedList = argumentList.map((arg) => {
 			if (arg.id === argumentId) {
-				return { ...arg, type: newType };
+				return { ...arg, type: newType, value: "", isValid: false };
 			}
 			return arg;
 		});
