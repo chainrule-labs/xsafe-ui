@@ -5,8 +5,7 @@
 	"scope": "/",
 	"start_url": "/",
 	"name": "xSafe",
-	"short_name": "xSafe",
-	"description": "An open source user interface for the cross-chain contract aggregation tool, xSafe.",
+	"description": "Redefining multi-chain deployment: same address, no nonces, no salts.",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",

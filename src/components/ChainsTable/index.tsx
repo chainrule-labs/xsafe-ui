@@ -16,7 +16,7 @@ function ChainsTable({
 	setHomeErrorMessage,
 }: IChainsTable) {
 	return (
-		<div className=" mt-3 flex w-full flex-col overflow-x-auto ring-1 ring-dark-200">
+		<div className="flex w-full flex-col overflow-x-auto ring-1 ring-dark-200">
 			<table className="min-w-full text-left">
 				<tbody>
 					{chainList.map((chain) => (

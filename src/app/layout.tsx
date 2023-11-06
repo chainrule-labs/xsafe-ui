@@ -10,7 +10,7 @@ import { ReduxProvider } from "../state/reduxProvider";
 export const metadata: Metadata = {
 	title: "xSafe",
 	description:
-		"An open source user interface for the cross-chain contract aggregation tool, xSafe.",
+		"Redefining multi-chain deployment: same address, no nonces, no salts.",
 };
 
 export default function RootLayout({
