@@ -102,13 +102,13 @@ function DeployButton({
 			}
 			className={`${
 				!valid || DISABLED_CHAINS.includes(chain.chainId)
-					? "cursor-not-allowed"
+					? "cursor-not-allowed opacity-70"
 					: null
 			} offset-border flex h-10 w-20 shrink-0 items-center justify-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100`}
 			onClick={handleDeployModal}
 			disabled={!valid || DISABLED_CHAINS.includes(chain.chainId)}
 		>
-			Deploy
+			{DISABLED_CHAINS.includes(chain.chainId) ? "Soon" : "Deploy"}
 		</button>
 	);
 }

@@ -122,28 +122,6 @@ export const chainList: SupportedChain[] = [
 		},
 		chainId: 1313161554,
 	},
-	// ********** Base Goerli ********** //
-	{
-		name: "Base Goerli",
-		imageSource: "/images/iconBase.svg",
-		nativeCurrency: {
-			symbol: "ETH",
-			decimals: 18,
-		},
-		blockExplorer: "https://goerli.basescan.org",
-		chainId: 84531,
-	},
-	// ********** Goerli ********** //
-	{
-		name: "Goerli",
-		imageSource: "/images/iconEthereum.svg",
-		nativeCurrency: {
-			symbol: "ETH",
-			decimals: 18,
-		},
-		blockExplorer: "https://goerli.etherscan.io",
-		chainId: 5,
-	},
 	// ********** Sepolia ********** //
 	{
 		name: "Sepolia",
@@ -154,5 +132,27 @@ export const chainList: SupportedChain[] = [
 		},
 		blockExplorer: "https://sepolia.etherscan.io",
 		chainId: 11155111,
+	},
+	// ********** Optimism Sepolia ********** //
+	{
+		name: "Optimism Sepolia",
+		imageSource: "/images/iconOptimism.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://sepolia-optimism.etherscan.io",
+		chainId: 11155420,
+	},
+	// ********** Polygon Mumbai ********** //
+	{
+		name: "Polygon Mumbai",
+		imageSource: "/images/iconPolygon.svg",
+		nativeCurrency: {
+			symbol: "MATIC",
+			decimals: 18,
+		},
+		blockExplorer: "https://mumbai.polygonscan.com",
+		chainId: 80001,
 	},
 ];

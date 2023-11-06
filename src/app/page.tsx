@@ -185,11 +185,8 @@ export default function Home() {
 					</div>
 				)}
 				<div className="mt-8 flex w-full flex-col">
-					<span className="font-bold text-primary-100">Chains</span>
-					<span className="mt-2">
-						<span className="text-primary-100">NOTE: </span>
-						This is a beta version. The only chains currently
-						supported are Base Goerli, Goerli, and Sepolia.
+					<span className="mb-1 text-start font-bold text-primary-100">
+						Chains
 					</span>
 					<ChainsTable
 						chainList={chainList}
