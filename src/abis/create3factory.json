@@ -102,13 +102,13 @@
 			{
 				"indexed": true,
 				"internalType": "bytes32",
-				"name": "hashedStrippedBytecode",
+				"name": "hashedCreationCode",
 				"type": "bytes32"
 			},
 			{
 				"indexed": false,
 				"internalType": "bytes",
-				"name": "constructorArgsBytecode",
+				"name": "constructorArgsCode",
 				"type": "bytes"
 			},
 			{
@@ -193,12 +193,12 @@
 			},
 			{
 				"internalType": "bytes",
-				"name": "_strippedBytecode",
+				"name": "_creationCode",
 				"type": "bytes"
 			},
 			{
 				"internalType": "bytes",
-				"name": "_constructorArgsBytecode",
+				"name": "_constructorArgsCode",
 				"type": "bytes"
 			}
 		],
@@ -236,7 +236,7 @@
 			},
 			{
 				"internalType": "bytes",
-				"name": "_strippedBytecode",
+				"name": "_creationCode",
 				"type": "bytes"
 			}
 		],
@@ -255,7 +255,7 @@
 		"inputs": [
 			{
 				"internalType": "bytes",
-				"name": "_strippedBytecode",
+				"name": "_creationCode",
 				"type": "bytes"
 			}
 		],
@@ -298,7 +298,7 @@
 			},
 			{
 				"internalType": "bytes",
-				"name": "_strippedBytecode",
+				"name": "_creationCode",
 				"type": "bytes"
 			}
 		],

@@ -97,9 +97,12 @@ export default function Home() {
 					Deploy any smart contract to multiple chains at the same
 					address.
 				</span>
-				<span className="mb-5">Forget nonces and salts.</span>
-				<span className="mb-1 font-bold text-primary-100">
-					Contract Bytecode{" "}
+				<span>Forget nonces and salts.</span>
+				<span className="mt-8 font-bold text-primary-100">
+					Contract Creation Code
+				</span>
+				<span className="mb-2">
+					Enter the bytecode without the constructor arguments.
 				</span>
 				<BytecodeInput
 					bytecode={bytecode}
@@ -107,8 +110,9 @@ export default function Home() {
 					setHomeErrorMessage={setHomeErrorMessage}
 				/>
 				<span className="mt-8 font-bold text-primary-100">
-					Constructor Arguments{" "}
+					Contract Constructor Arguments
 				</span>
+				<span>Define the constructor arguments if there are any.</span>
 				<div className="flex w-full flex-col">
 					{argumentList && argumentList.length > 0
 						? argumentList.map((arg) => (
@@ -144,7 +148,7 @@ export default function Home() {
 					{argumentList ? (
 						<div className="smd:mt-4" />
 					) : (
-						<div className="mt-1" />
+						<div className="mt-2" />
 					)}
 					<ArgumentButton
 						add
