@@ -11,6 +11,30 @@ export const metadata: Metadata = {
 	title: "xSafe",
 	description:
 		"Redefining multi-chain deployment: same address, no nonces, no salts.",
+	openGraph: {
+		title: "xSafe",
+		description:
+			"Redefining multi-chain deployment: same address, no nonces, no salts.",
+		url: "https://xsafe.chainrule.io/",
+		type: "website",
+		images: [
+			{
+				url: "https://xsafe.chainrule.io/card-image.png",
+			},
+		],
+	},
+	twitter: {
+		title: "xSafe",
+		description:
+			"Redefining multi-chain deployment: same address, no nonces, no salts.",
+		card: "summary_large_image",
+		images: [
+			{
+				url: "https://xsafe.chainrule.io/card-image.png",
+			},
+		],
+		site: "https://xsafe.chainrule.io/",
+	},
 };
 
 export default function RootLayout({

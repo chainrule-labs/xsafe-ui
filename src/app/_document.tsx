@@ -32,35 +32,6 @@ export default function Document() {
 					name="msapplication-TileColor"
 					content="#addad5" // light-200
 				/>
-				{/* ******* Open Graph & Twitter Cards ******* */}
-				<title>xSafe</title>
-				<meta
-					name="description"
-					content="Redefining multi-chain deployment: same address, no nonces, no salts."
-				/>
-
-				<meta property="og:url" content="https://xsafe.chainrule.io/" />
-				<meta property="og:type" content="website" />
-				<meta property="og:title" content="xSafe" />
-				<meta
-					property="og:description"
-					content="Redefining multi-chain deployment: same address, no nonces, no salts."
-				/>
-				<meta property="og:image" content="/meta-card-image.png" />
-
-				<meta name="twitter:card" content="summary_large_image" />
-				<meta property="twitter:domain" content="xsafe.chainrule.io" />
-				<meta
-					property="twitter:url"
-					content="https://xsafe.chainrule.io/"
-				/>
-				<meta name="twitter:title" content="xSafe" />
-				<meta
-					name="twitter:description"
-					content="Redefining multi-chain deployment: same address, no nonces, no salts."
-				/>
-				<meta name="twitter:image" content="/meta-card-image.png" />
-				{/* ****************************************** */}
 			</Head>
 			<body>
 				<Main />
