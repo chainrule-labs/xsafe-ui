@@ -18,7 +18,6 @@ import {
 } from "@wagmi/core";
 import {
 	arbitrum,
-	aurora,
 	avalanche,
 	base,
 	bsc,
@@ -44,7 +43,6 @@ import { rpcUrlMap } from "../data/rpcUrlMap";
 const { chains, publicClient } = configureChains(
 	[
 		arbitrum,
-		aurora,
 		avalanche,
 		base,
 		optimismSepolia,
