@@ -69,38 +69,36 @@ function ArgumentInput({
 	const isInputValid = (value: string): boolean => {
 		let isValid = false;
 
-		if (value.length > 0) {
-			switch (true) {
-				case isSolidityString(argument.type):
-					isValid = true;
-					break;
-				case isSolidityAddress(argument.type):
-					isValid = isValidAddress(value);
-					break;
-				case isSolidityAddressArray(argument.type):
-					isValid = isValidAddressArray(value);
-					break;
-				case isSolidityBool(argument.type):
-					isValid = isValidBool(value);
-					break;
-				case isSolidityBoolArray(argument.type):
-					isValid = isValidBoolArray(value);
-					break;
-				case isSolidityBytes(argument.type):
-					isValid = isValidBytes(value);
-					break;
-				case isSolidityBytesArray(argument.type):
-					isValid = isValidBytesArray(value);
-					break;
-				case isSolidityInt(argument.type):
-					isValid = isValidInt(value);
-					break;
-				case isSolidityIntArray(argument.type):
-					isValid = isValidIntArray(value);
-					break;
-				default:
-					isValid = false;
-			}
+		switch (true) {
+			case isSolidityString(argument.type):
+				isValid = true;
+				break;
+			case isSolidityAddress(argument.type):
+				isValid = isValidAddress(value);
+				break;
+			case isSolidityAddressArray(argument.type):
+				isValid = isValidAddressArray(value);
+				break;
+			case isSolidityBool(argument.type):
+				isValid = isValidBool(value);
+				break;
+			case isSolidityBoolArray(argument.type):
+				isValid = isValidBoolArray(value);
+				break;
+			case isSolidityBytes(argument.type):
+				isValid = isValidBytes(value);
+				break;
+			case isSolidityBytesArray(argument.type):
+				isValid = isValidBytesArray(value);
+				break;
+			case isSolidityInt(argument.type):
+				isValid = isValidInt(value);
+				break;
+			case isSolidityIntArray(argument.type):
+				isValid = isValidIntArray(value);
+				break;
+			default:
+				isValid = false;
 		}
 		return isValid;
 	};
@@ -109,6 +107,13 @@ function ArgumentInput({
 		const isValid = isInputValid(value);
 
 		if (value.length === 0) {
+			setArgumentList(
+				argumentList!.map((arg) =>
+					arg.id === argument.id
+						? { ...arg, value: "", isValid: false }
+						: arg
+				)
+			);
 			setHomeErrorMessage("");
 		} else if (value.length > 0 && isValid) {
 			setHomeErrorMessage("");

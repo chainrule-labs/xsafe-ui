@@ -8,7 +8,6 @@ export const rpcUrlMap: Record<number, string> = {
 	43114: process.env.PRIVATE_AVALANCHE_RPC!,
 	250: process.env.PRIVATE_FANTOM_RPC!,
 	56: process.env.PRIVATE_BSC_RPC!,
-	1313161554: process.env.PRIVATE_AURORA_RPC!,
 	8453: process.env.PRIVATE_BASE_RPC!,
 	11155111: process.env.PRIVATE_SEPOLIA_RPC!,
 	11155420: process.env.PRIVATE_OPTIMISM_SEPOLIA_RPC!,

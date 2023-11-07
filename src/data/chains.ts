@@ -111,17 +111,6 @@ export const chainList: SupportedChain[] = [
 		},
 		chainId: 250,
 	},
-	// ********** Aurora ********** //
-	{
-		name: "Aurora",
-		imageSource: "/images/iconAurora.svg",
-		blockExplorer: "https://explorer.mainnet.aurora.dev",
-		nativeCurrency: {
-			symbol: "ETH",
-			decimals: 18,
-		},
-		chainId: 1313161554,
-	},
 	// ********** Sepolia ********** //
 	{
 		name: "Sepolia",
