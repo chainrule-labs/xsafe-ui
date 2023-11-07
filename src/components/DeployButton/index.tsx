@@ -109,7 +109,13 @@ function DeployButton({
 			onClick={handleDeployModal}
 			disabled={!valid || DISABLED_CHAINS.includes(chain.chainId)}
 		>
-			{DISABLED_CHAINS.includes(chain.chainId) ? "Soon" : "Deploy"}
+			<span
+				className={`${
+					DISABLED_CHAINS.includes(chain.chainId) && "opacity-60"
+				}`}
+			>
+				{DISABLED_CHAINS.includes(chain.chainId) ? "Soon" : "Deploy"}
+			</span>
 		</button>
 	);
 }

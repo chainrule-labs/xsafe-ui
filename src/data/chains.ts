@@ -12,17 +12,6 @@ export const chainList: SupportedChain[] = [
 		blockExplorer: "https://etherscan.io",
 		chainId: 1,
 	},
-	// ********** Arbitrum One ********** //
-	{
-		name: "Arbitrum One",
-		imageSource: "/images/iconArbitrumOne.svg",
-		nativeCurrency: {
-			symbol: "ETH",
-			decimals: 18,
-		},
-		blockExplorer: "https://arbiscan.io",
-		chainId: 42161,
-	},
 	// ********** Optimism ********** //
 	{
 		name: "Optimism",
@@ -44,6 +33,50 @@ export const chainList: SupportedChain[] = [
 		},
 		blockExplorer: "https://polygonscan.com",
 		chainId: 137,
+	},
+	// ********** Sepolia ********** //
+	{
+		name: "Sepolia",
+		imageSource: "/images/iconEthereum.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://sepolia.etherscan.io",
+		chainId: 11155111,
+	},
+	// ********** Optimism Sepolia ********** //
+	{
+		name: "Optimism Sepolia",
+		imageSource: "/images/iconOptimism.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://sepolia-optimism.etherscan.io",
+		chainId: 11155420,
+	},
+	// ********** Polygon Mumbai ********** //
+	{
+		name: "Polygon Mumbai",
+		imageSource: "/images/iconPolygon.svg",
+		nativeCurrency: {
+			symbol: "MATIC",
+			decimals: 18,
+		},
+		blockExplorer: "https://mumbai.polygonscan.com",
+		chainId: 80001,
+	},
+	// ********** Arbitrum One ********** //
+	{
+		name: "Arbitrum One",
+		imageSource: "/images/iconArbitrumOne.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://arbiscan.io",
+		chainId: 42161,
 	},
 	// ********** Base ********** //
 	{
@@ -110,38 +143,5 @@ export const chainList: SupportedChain[] = [
 			decimals: 18,
 		},
 		chainId: 250,
-	},
-	// ********** Sepolia ********** //
-	{
-		name: "Sepolia",
-		imageSource: "/images/iconEthereum.svg",
-		nativeCurrency: {
-			symbol: "ETH",
-			decimals: 18,
-		},
-		blockExplorer: "https://sepolia.etherscan.io",
-		chainId: 11155111,
-	},
-	// ********** Optimism Sepolia ********** //
-	{
-		name: "Optimism Sepolia",
-		imageSource: "/images/iconOptimism.svg",
-		nativeCurrency: {
-			symbol: "ETH",
-			decimals: 18,
-		},
-		blockExplorer: "https://sepolia-optimism.etherscan.io",
-		chainId: 11155420,
-	},
-	// ********** Polygon Mumbai ********** //
-	{
-		name: "Polygon Mumbai",
-		imageSource: "/images/iconPolygon.svg",
-		nativeCurrency: {
-			symbol: "MATIC",
-			decimals: 18,
-		},
-		blockExplorer: "https://mumbai.polygonscan.com",
-		chainId: 80001,
 	},
 ];
