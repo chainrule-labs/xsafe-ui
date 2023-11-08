@@ -90,29 +90,28 @@ export default function Home() {
 	return (
 		<div className="flex w-full flex-1 flex-col items-center justify-start py-10">
 			<div className="flex min-h-fit w-full min-w-[300px] max-w-3xl flex-col px-4">
-				<h1 className="mb-5 w-fit border-b border-b-primary-100 pb-1 text-xl font-bold">
-					Predictive Deployment
+				<h1 className="mb-5 w-fit border-b border-b-primary-100 pb-1 text-2xl font-bold">
+					xSafe
 				</h1>
-				<span className="mb-2">
-					Deploy any smart contract to multiple chains at the same
-					address.
+				<span>
+					Deploy to the same address on all chains. Forget nonces and
+					salts.
 				</span>
-				<span>Forget nonces and salts.</span>
-				<span className="mt-8 font-bold text-primary-100">
-					Contract Creation Code
+				<span className="mt-8 text-lg font-bold text-primary-100">
+					Creation Code
 				</span>
 				<span className="mb-2">
-					Enter the bytecode without the constructor arguments.
+					Enter bytecode without constructor arguments.
 				</span>
 				<BytecodeInput
 					bytecode={bytecode}
 					setBytecode={setBytecode}
 					setHomeErrorMessage={setHomeErrorMessage}
 				/>
-				<span className="mt-8 font-bold text-primary-100">
-					Contract Constructor Arguments
+				<span className="mt-8 text-lg font-bold text-primary-100">
+					Constructor Arguments
 				</span>
-				<span>Define the constructor arguments if there are any.</span>
+				<span>Add arguments if there are any.</span>
 				<div className="flex w-full flex-col">
 					{argumentList && argumentList.length > 0
 						? argumentList.map((arg) => (
@@ -195,7 +194,7 @@ export default function Home() {
 					</div>
 				)}
 				<div className="mt-8 flex w-full flex-col">
-					<span className="mb-1 text-start font-bold text-primary-100">
+					<span className="mb-1 text-start text-lg font-bold text-primary-100">
 						Chains
 					</span>
 					<ChainsTable
@@ -223,7 +222,7 @@ export default function Home() {
 				currentNetwork?.isSupported &&
 				deployedContracts.length > 0 ? (
 					<>
-						<span className="mb-1 mt-10 font-bold text-primary-100">
+						<span className="mb-1 mt-10 text-lg font-bold text-primary-100">
 							Deployed Contracts on{" "}
 							{
 								getChain({ chainId: currentNetwork?.chainId })

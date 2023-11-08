@@ -40,7 +40,7 @@ function ArgumentButton({
 			className="offset-border flex h-10 w-fit shrink-0 items-center justify-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100"
 			onClick={handleOnClick}
 		>
-			{add ? "+ Add Argument" : "X"}
+			{add ? "+ Add" : "X"}
 		</button>
 	);
 }

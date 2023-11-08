@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 		type: "website",
 		images: [
 			{
-				url: "https://xsafe.chainrule.io/card-image.png",
+				url: "https://xsafe.chainrule.io/card-image.png?123",
 			},
 		],
 	},
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		images: [
 			{
-				url: "https://xsafe.chainrule.io/card-image.png",
+				url: "https://xsafe.chainrule.io/card-image.png?123",
 			},
 		],
 		site: "https://xsafe.chainrule.io/",
