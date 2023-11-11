@@ -11,6 +11,7 @@ export const chainList: SupportedChain[] = [
 		},
 		blockExplorer: "https://etherscan.io",
 		chainId: 1,
+		isTestnet: false,
 	},
 	// ********** Optimism ********** //
 	{
@@ -22,6 +23,7 @@ export const chainList: SupportedChain[] = [
 		},
 		blockExplorer: "https://optimistic.etherscan.io",
 		chainId: 10,
+		isTestnet: false,
 	},
 	// ********** Polygon ********** //
 	{
@@ -33,61 +35,7 @@ export const chainList: SupportedChain[] = [
 		},
 		blockExplorer: "https://polygonscan.com",
 		chainId: 137,
-	},
-	// ********** Sepolia ********** //
-	{
-		name: "Sepolia",
-		imageSource: "/images/iconEthereum.svg",
-		nativeCurrency: {
-			symbol: "ETH",
-			decimals: 18,
-		},
-		blockExplorer: "https://sepolia.etherscan.io",
-		chainId: 11155111,
-	},
-	// ********** Optimism Sepolia ********** //
-	{
-		name: "Optimism Sepolia",
-		imageSource: "/images/iconOptimism.svg",
-		nativeCurrency: {
-			symbol: "ETH",
-			decimals: 18,
-		},
-		blockExplorer: "https://sepolia-optimism.etherscan.io",
-		chainId: 11155420,
-	},
-	// ********** Polygon Mumbai ********** //
-	{
-		name: "Polygon Mumbai",
-		imageSource: "/images/iconPolygon.svg",
-		nativeCurrency: {
-			symbol: "MATIC",
-			decimals: 18,
-		},
-		blockExplorer: "https://mumbai.polygonscan.com",
-		chainId: 80001,
-	},
-	// ********** Arbitrum One ********** //
-	{
-		name: "Arbitrum One",
-		imageSource: "/images/iconArbitrumOne.svg",
-		nativeCurrency: {
-			symbol: "ETH",
-			decimals: 18,
-		},
-		blockExplorer: "https://arbiscan.io",
-		chainId: 42161,
-	},
-	// ********** Base ********** //
-	{
-		name: "Base",
-		imageSource: "/images/iconBase.svg",
-		nativeCurrency: {
-			symbol: "ETH",
-			decimals: 18,
-		},
-		blockExplorer: "https://basescan.org",
-		chainId: 8453,
+		isTestnet: false,
 	},
 	// ********** BNB Smart Chain ********** //
 	{
@@ -99,28 +47,7 @@ export const chainList: SupportedChain[] = [
 		},
 		blockExplorer: "https://bscscan.com",
 		chainId: 56,
-	},
-	// ********** Avalanche C-Chain ********** //
-	{
-		name: "Avalanche C-Chain",
-		imageSource: "/images/iconAvalanche.svg",
-		nativeCurrency: {
-			symbol: "AVAX",
-			decimals: 18,
-		},
-		blockExplorer: "https://snowtrace.io",
-		chainId: 43114,
-	},
-	// ********** Celo ********** //
-	{
-		name: "Celo",
-		imageSource: "/images/iconCelo.svg",
-		nativeCurrency: {
-			symbol: "CELO",
-			decimals: 18,
-		},
-		blockExplorer: "https://celoscan.io",
-		chainId: 42220,
+		isTestnet: false,
 	},
 	// ********** Gnosis ********** //
 	{
@@ -132,6 +59,91 @@ export const chainList: SupportedChain[] = [
 		},
 		blockExplorer: "https://gnosisscan.io",
 		chainId: 100,
+		isTestnet: false,
+	},
+	// ********** Sepolia ********** //
+	{
+		name: "Sepolia",
+		imageSource: "/images/iconEthereum.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://sepolia.etherscan.io",
+		chainId: 11155111,
+		isTestnet: true,
+	},
+	// ********** Optimism Sepolia ********** //
+	{
+		name: "Optimism Sepolia",
+		imageSource: "/images/iconOptimism.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://sepolia-optimism.etherscan.io",
+		chainId: 11155420,
+		isTestnet: true,
+	},
+	// ********** Polygon Mumbai ********** //
+	{
+		name: "Polygon Mumbai",
+		imageSource: "/images/iconPolygon.svg",
+		nativeCurrency: {
+			symbol: "MATIC",
+			decimals: 18,
+		},
+		blockExplorer: "https://mumbai.polygonscan.com",
+		chainId: 80001,
+		isTestnet: true,
+	},
+	// ********** Arbitrum One ********** //
+	{
+		name: "Arbitrum One",
+		imageSource: "/images/iconArbitrumOne.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://arbiscan.io",
+		chainId: 42161,
+		isTestnet: false,
+	},
+	// ********** Base ********** //
+	{
+		name: "Base",
+		imageSource: "/images/iconBase.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://basescan.org",
+		chainId: 8453,
+		isTestnet: false,
+	},
+	// ********** Avalanche C-Chain ********** //
+	{
+		name: "Avalanche C-Chain",
+		imageSource: "/images/iconAvalanche.svg",
+		nativeCurrency: {
+			symbol: "AVAX",
+			decimals: 18,
+		},
+		blockExplorer: "https://snowtrace.io",
+		chainId: 43114,
+		isTestnet: false,
+	},
+	// ********** Celo ********** //
+	{
+		name: "Celo",
+		imageSource: "/images/iconCelo.svg",
+		nativeCurrency: {
+			symbol: "CELO",
+			decimals: 18,
+		},
+		blockExplorer: "https://celoscan.io",
+		chainId: 42220,
+		isTestnet: false,
 	},
 	// ********** Fantom ********** //
 	{
@@ -143,5 +155,6 @@ export const chainList: SupportedChain[] = [
 			decimals: 18,
 		},
 		chainId: 250,
+		isTestnet: false,
 	},
 ];

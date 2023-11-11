@@ -7,4 +7,5 @@ export type SupportedChain = {
 	};
 	blockExplorer: string;
 	chainId: number;
+	isTestnet: boolean;
 };
