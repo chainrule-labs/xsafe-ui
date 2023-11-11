@@ -39,6 +39,9 @@ export default function Home() {
 	const [constructorArgsBytecode, setConstructorArgsBytecode] =
 		useState<string>("");
 
+	const testnetList = chainList.filter((chain) => chain.isTestnet);
+	const mainnetList = chainList.filter((chain) => !chain.isTestnet);
+
 	const closeModal = () => {
 		setSelectedChain(null);
 		setIsModalOpen(false);
@@ -195,10 +198,24 @@ export default function Home() {
 				)}
 				<div className="mt-8 flex w-full flex-col">
 					<span className="mb-1 text-start text-lg font-bold text-primary-100">
-						Chains
+						Mainnets
 					</span>
 					<ChainsTable
-						chainList={chainList}
+						chainList={mainnetList}
+						isWalletConnected={isWalletConnected}
+						currentNetwork={currentNetwork!}
+						nativeBalance={nativeBalance!}
+						bytecode={bytecode}
+						argumentList={argumentList}
+						openModal={openModal}
+						homeErrorMessage={homeErrorMessage}
+						setHomeErrorMessage={setHomeErrorMessage}
+					/>
+					<span className="mb-1 mt-8 text-start text-lg font-bold text-primary-100">
+						Testnets
+					</span>
+					<ChainsTable
+						chainList={testnetList}
 						isWalletConnected={isWalletConnected}
 						currentNetwork={currentNetwork!}
 						nativeBalance={nativeBalance!}
