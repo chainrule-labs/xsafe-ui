@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@headlessui/react": "^1.7.17",
 		"@reduxjs/toolkit": "^1.9.7",
-		"@wagmi/core": "^1.4.3",
+		"@wagmi/core": "^1.4.7",
 		"encoding": "^0.1.13",
 		"lokijs": "^1.5.12",
 		"next": "^14.0.2",

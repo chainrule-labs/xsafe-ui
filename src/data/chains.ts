@@ -121,6 +121,18 @@ export const chainList: SupportedChain[] = [
 		chainId: 8453,
 		isTestnet: false,
 	},
+	// ********** Scroll ********** //
+	{
+		name: "Scroll",
+		imageSource: "/images/iconScroll.svg",
+		blockExplorer: "https://scrollscan.com",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		chainId: 534352,
+		isTestnet: false,
+	},
 	// ********** Avalanche C-Chain ********** //
 	{
 		name: "Avalanche C-Chain",

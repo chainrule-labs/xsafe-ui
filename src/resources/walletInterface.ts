@@ -40,6 +40,21 @@ import { publicProvider } from "@wagmi/core/providers/public";
 
 import { rpcUrlMap } from "../data/rpcUrlMap";
 
+const scroll = {
+	id: 534352,
+	name: "Scroll",
+	network: "scroll",
+	nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
+	rpcUrls: {
+		public: { http: ["https://rpc.scroll.io"] },
+		default: { http: ["https://rpc.scroll.io"] },
+	},
+	blockExplorers: {
+		etherscan: { name: "Scrollscan", url: "https://scrollscan.com" },
+		default: { name: "Scrollscan", url: "https://scrollscan.com" },
+	},
+} as const satisfies Chain;
+
 const { chains, publicClient } = configureChains(
 	[
 		arbitrum,
@@ -55,6 +70,7 @@ const { chains, publicClient } = configureChains(
 		optimism,
 		polygon,
 		sepolia,
+		scroll,
 	],
 	[
 		jsonRpcProvider({

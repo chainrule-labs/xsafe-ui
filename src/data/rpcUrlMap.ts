@@ -9,6 +9,7 @@ export const rpcUrlMap: Record<number, string> = {
 	250: process.env.PRIVATE_FANTOM_RPC!,
 	56: process.env.PRIVATE_BSC_RPC!,
 	8453: process.env.PRIVATE_BASE_RPC!,
+	534352: process.env.PRIVATE_SCROLL_RPC!,
 	11155111: process.env.PRIVATE_SEPOLIA_RPC!,
 	11155420: process.env.PRIVATE_OPTIMISM_SEPOLIA_RPC!,
 	80001: process.env.PRIVATE_POLYGON_MUMBAI_RPC!,
