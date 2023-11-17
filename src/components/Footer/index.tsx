@@ -1,5 +1,5 @@
 import React from "react";
-import { FaGithub, FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaTelegram, FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
 	return (
@@ -19,6 +19,14 @@ function Footer() {
 				rel="noopener noreferrer"
 			>
 				<FaXTwitter size="28px" />
+			</a>
+			<a
+				className="flex h-12 w-12 flex-shrink-0 items-center justify-center hover:text-primary-100"
+				href={process.env.TELEGRAM_URL}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<FaTelegram size="28px" />
 			</a>
 		</footer>
 	);
