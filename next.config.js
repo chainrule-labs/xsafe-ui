@@ -35,5 +35,8 @@ module.exports = withPWA({
 		GITHUB_URL: "https://github.com/chainrule-labs",
 		TWITTER_URL: "https://twitter.com/chainrule_io",
 		TELEGRAM_URL: "https://t.me/xsafe_support",
+		DOCS_URL: "https://docs.xsafe.chainrule.io",
+		FAQ_URL: "https://docs.xsafe.chainrule.io/references/faq",
+		CHAIN_RULE_URL: "https://chainrule.io",
 	},
 });

@@ -160,7 +160,7 @@ function DeployModal({
 							leaveFrom="opacity-100"
 							leaveTo="opacity-0"
 						>
-							<Dialog.Panel className="min-w-[300px] transform overflow-hidden border border-dark-200 bg-dark-600 px-6 pb-6 pt-2 text-left align-middle sm:w-[485px]">
+							<Dialog.Panel className="transform overflow-hidden border border-dark-200 bg-dark-600 px-6 pb-6 pt-2 text-left align-middle sm:w-[485px]">
 								<Dialog.Title
 									as="h3"
 									className="flex items-center justify-between"

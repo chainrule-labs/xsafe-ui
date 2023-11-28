@@ -92,7 +92,7 @@ export default function Home() {
 
 	return (
 		<div className="flex w-full flex-1 flex-col items-center justify-start py-10">
-			<div className="flex min-h-fit w-full min-w-[300px] max-w-3xl flex-col px-4">
+			<div className="flex min-h-fit w-full max-w-3xl flex-col px-4">
 				<h1 className="mb-5 w-fit border-b border-b-primary-100 pb-1 text-2xl font-bold">
 					xSafe
 				</h1>

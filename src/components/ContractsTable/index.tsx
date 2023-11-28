@@ -15,7 +15,7 @@ function ContractsTable({
 
 	return (
 		<div className="flex w-full flex-col overflow-x-auto ring-1 ring-dark-200">
-			<table className="min-w-full text-left">
+			<table className="w-full text-left">
 				<tbody>
 					<tr className="border-b border-b-dark-200">
 						<td className="px-6 py-4 font-bold">Address</td>

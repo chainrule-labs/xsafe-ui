@@ -17,7 +17,7 @@ function ChainsTable({
 }: IChainsTable) {
 	return (
 		<div className="flex w-full flex-col overflow-x-auto ring-1 ring-dark-200">
-			<table className="min-w-full text-left">
+			<table className="w-full text-left">
 				<tbody>
 					{chainList.map((chain) => (
 						<tr
@@ -38,7 +38,7 @@ function ChainsTable({
 									currentNetwork?.chainId ===
 										chain.chainId ? (
 										<FaRegCircleDot
-											className="mr-3 text-good-accent"
+											className="mr-3 shrink-0 text-good-accent"
 											size="14px"
 										/>
 									) : null}
